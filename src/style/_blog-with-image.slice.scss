@@ -1,0 +1,28 @@
+.block-with-image-img {
+  img {
+    width: 100%;
+  }
+}
+
+.block-with-image-block {
+  .btn {
+    width:260px;
+  }
+
+  .gatsby-image-wrapper {
+    display: inline-block;
+    max-width: 500px;
+  }
+
+  max-width: 795px;
+  margin: 10px auto;
+}
+
+.block-with-image-text {
+  ul {
+    display: inline-block;
+    padding: 0;
+    margin-top: 1rem;
+    line-height: 26px;
+  }
+}

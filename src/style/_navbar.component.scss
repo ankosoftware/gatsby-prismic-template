@@ -1,0 +1,32 @@
+.navbar-brand {
+  width: 107px;
+}
+
+.bg-light {
+  background-color: #ffffff !important;
+}
+
+.navbar-nav {
+    a {
+      font-size: 14px;
+      padding: 15px 15px !important;
+    }
+}
+
+@include media-breakpoint-down(md) {
+  .navbar-nav {
+    a {
+      padding: 5px 0 !important;
+    }
+  }
+}
+
+.navbar-toggler {
+  &:active, &:focus {
+    outline: 1px solid $primary;
+  }
+}
+
+.navbar-nav {
+  @extend .ml-auto;
+}
