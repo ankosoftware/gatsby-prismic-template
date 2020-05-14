@@ -23,7 +23,7 @@ export const BootstrapNavbar = ({theme = 'dark', logoDark, logoLight, title, men
                     <span className="navbar-toggler-icon">&nbsp;</span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav ml-auto">
                         {menu.map((item, index) => (
                             <li className="nav-item" key={`nav-link-${index}`}>
                                 <CustomLink

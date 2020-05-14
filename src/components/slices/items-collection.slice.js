@@ -27,11 +27,11 @@ const query = graphql`
                                 }
                             }
                         }
-                        description
-                        background_image
+#                        description
+                        bg_image
                         text
                         title
-                        preview_image
+#                        preview_image
                     }
                 }
             }

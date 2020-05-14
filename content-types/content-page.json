@@ -1,0 +1,533 @@
+{
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "Page ID",
+        "placeholder" : "Enter Page ID"
+      }
+    },
+    "parent" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "document",
+        "customtypes" : [ "content-page" ],
+        "label" : "Parent"
+      }
+    },
+    "aside_navigation" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "document",
+        "customtypes" : [ "aside-navigation" ],
+        "label" : "Aside Navigation"
+      }
+    },
+    "bg_color" : {
+      "type" : "Color",
+      "config" : {
+        "label" : "Background Color"
+      }
+    },
+    "bg_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Background Image"
+      }
+    },
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "Title",
+        "placeholder" : "Enter Title"
+      }
+    },
+    "text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "Text",
+        "placeholder" : "Enter Text"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "feature" : [ {
+            "name" : "accordion",
+            "display" : "accordion"
+          }, {
+            "name" : "carousel",
+            "display" : "carousel"
+          }, {
+            "name" : "list-numbered",
+            "display" : "list-numbered"
+          }, {
+            "name" : "list-image",
+            "display" : "list-image"
+          }, {
+            "name" : "list-process",
+            "display" : "list-process"
+          }, {
+            "name" : "col-1-detailed",
+            "display" : "col-1-detailed"
+          }, {
+            "name" : "col-2-detailed-small-image",
+            "display" : "col-2-detailed-small-image"
+          }, {
+            "name" : "col-3-detailed",
+            "display" : "col-3-detailed"
+          }, {
+            "name" : "col-4-detailed",
+            "display" : "col-4-detailed"
+          }, {
+            "name" : "col-4-detailed-small-image",
+            "display" : "col-4-detailed-small-image"
+          }, {
+            "name" : "block-3-detailed",
+            "display" : "block-3-detailed"
+          } ],
+          "block_with_text_and_image" : [ {
+            "name" : "content-right",
+            "display" : "content-right"
+          }, {
+            "name" : "content-right-bg",
+            "display" : "content-right-bg"
+          }, {
+            "name" : "content-left",
+            "display" : "content-left"
+          }, {
+            "name" : "content-left-bg",
+            "display" : "content-left-bg"
+          }, {
+            "name" : "content-top",
+            "display" : "content-top"
+          } ]
+        },
+        "choices" : {
+          "form" : {
+            "type" : "Slice",
+            "fieldset" : "Form",
+            "description" : "Form with Header",
+            "icon" : "receipt",
+            "display" : "list",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Background Image"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Text Сontent",
+                  "placeholder" : "Enter Text Сontent"
+                }
+              },
+              "form_script" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Form Script",
+                  "placeholder" : "Enter Form Script"
+                }
+              },
+              "form_url" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Form Url",
+                  "placeholder" : "Enter Form Url"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "feature" : {
+            "type" : "Slice",
+            "fieldset" : "Feature",
+            "description" : "Multiple Items",
+            "icon" : "view_module",
+            "display" : "list",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Background Image"
+                }
+              },
+              "tiltle" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Tiltle",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text",
+                  "placeholder" : "Enter text"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Image"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link",
+                  "placeholder" : "Select Link"
+                }
+              },
+              "link_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link Text",
+                  "placeholder" : "Enter Link Text"
+                }
+              },
+              "link_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
+                  "default_value" : "link",
+                  "label" : "Link Style",
+                  "placeholder" : "Select link style"
+                }
+              }
+            }
+          },
+          "block_with_text_and_image" : {
+            "type" : "Slice",
+            "fieldset" : "Block with Text and Image",
+            "description" : "Banner with Caption and Button",
+            "icon" : "chrome_reader_mode",
+            "display" : "list",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Background Image"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Image"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text",
+                  "placeholder" : "Enter Text"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link",
+                  "placeholder" : "Select Link"
+                }
+              },
+              "link_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link Text",
+                  "placeholder" : "Enter Link Text"
+                }
+              },
+              "link_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
+                  "default_value" : "link",
+                  "label" : "Link Style",
+                  "placeholder" : "Select Link Text"
+                }
+              },
+              "min_height" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Minimal Height",
+                  "placeholder" : "Enter Minimal Height"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "text" : {
+            "type" : "Slice",
+            "fieldset" : "Text",
+            "description" : "Rich Text Section",
+            "icon" : "text_fields",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Background Image"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text",
+                  "placeholder" : "Enter Text"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "items_collection" : {
+            "type" : "Slice",
+            "fieldset" : "Items Collection",
+            "description" : "Items Collection",
+            "icon" : "view_column",
+            "display" : "list",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "bg_color"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "bg_image"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text",
+                  "placeholder" : "Enter Text"
+                }
+              },
+              "link_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link_text"
+                }
+              },
+              "link_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
+                  "default_value" : "link",
+                  "label" : "link_style",
+                  "placeholder" : "Select link style"
+                }
+              }
+            },
+            "repeat" : {
+              "tag" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "tag"
+                }
+              }
+            }
+          },
+          "pricing_plans" : {
+            "type" : "Slice",
+            "fieldset" : "Pricing Plans",
+            "description" : "Description Pricing Plans",
+            "icon" : "monetization_on",
+            "display" : "list",
+            "non-repeat" : {
+              "bg_color" : {
+                "type" : "Color",
+                "config" : {
+                  "label" : "Background Color"
+                }
+              },
+              "title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Title",
+                  "placeholder" : "Enter Title"
+                }
+              },
+              "text" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Text",
+                  "placeholder" : "Enter Text"
+                }
+              },
+              "bg_image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Background Image"
+                }
+              }
+            },
+            "repeat" : {
+              "plan_name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Plan name",
+                  "placeholder" : "Enter plan name"
+                }
+              },
+              "plan_price" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Plan price",
+                  "placeholder" : "Enter price"
+                }
+              },
+              "is_free_plan" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "paid",
+                  "placeholder_true" : "free",
+                  "default_value" : true,
+                  "label" : "Is free plan"
+                }
+              },
+              "price_units" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Price units",
+                  "placeholder" : "Enter price units"
+                }
+              },
+              "plan_features" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "Plan features",
+                  "placeholder" : "Enter plan features"
+                }
+              },
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link",
+                  "placeholder" : "Enter Link"
+                }
+              },
+              "link_text" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Link Text",
+                  "placeholder" : "Enter Button Text"
+                }
+              },
+              "link_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
+                  "default_value" : "link",
+                  "label" : "Link Style",
+                  "placeholder" : "Select link style"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

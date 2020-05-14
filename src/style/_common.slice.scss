@@ -1,0 +1,21 @@
+.width-more-height-md {
+  width: $width-more-height-md;
+  height: $height-less-width-md;
+}
+
+.height-more-width-md {
+  width: $width-less-height-md;
+  height: $height-more-width-md;
+  object-fit: contain;
+}
+
+.width-more-height-sm {
+  width: $width-more-height-sm;
+  height: $height-less-width-sm;
+}
+
+.height-more-width-sm {
+  width: $width-less-height-sm;
+  height: $height-more-width-sm;
+  object-fit: contain;
+}

@@ -60,8 +60,8 @@ export const query = graphql`
                         text
                         form_uri
                         form_script
-                        background_color
-                        background_image
+                        bg_color
+                        bg_image
                         _meta {
                             uid
                             type

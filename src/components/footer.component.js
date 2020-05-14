@@ -10,7 +10,7 @@ const query = graphql`
             allFooters {
                 edges {
                     node {
-                        background_color
+                        bg_color
                         _meta {
                             id
                         }

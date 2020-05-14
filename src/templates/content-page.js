@@ -24,7 +24,7 @@ const ContentPage = ({uri, data}) => {
                   <div className="py-5 text-center">
                       <RichText render={page.node.title} linkResolver={linkResolver} />
                   </div>
-                <div className="content-page-text">
+                <div className="text-center">
                     <RichText render={page.node.text} linkResolver={linkResolver} />
                 </div>
               </Section>
@@ -61,8 +61,8 @@ export const query = graphql`
                             type
                             lang
                         }
-                        background_image
-                        background_color
+                        bg_image
+                        bg_color
                         text
                         title
                         aside_navigation {

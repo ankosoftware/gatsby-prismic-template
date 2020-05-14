@@ -3,24 +3,27 @@
 @import "~bootstrap/scss/variables";
 
 
-$font-family-base: 'Open sans', 'sans-serif';
-
+// common
+$font-family-base: 'Roboto', sans-serif;
 $body-color: #565656;
 
+
+// header
 $h1-font-size: 44px;
 $h2-font-size: 40px;
 $h3-font-size: 28px;
 $h4-font-size: 22px;
 
-$headings-font-family: 'Raleway', 'sans-serif';
+$headings-font-family: 'Roboto', sans-serif;
 $headings-line-height: 1.1;
 
+
+//border
 $border-radius: 3px;
 $border-radius-lg: $border-radius;
 
 
 //btn
-
 $btn-padding-x-lg: 30px;
 $btn-padding-y-lg: 11px;
 $btn-font-size-lg: 22px;
@@ -30,13 +33,12 @@ $btn-font-weight: 400;
 $btn-font-size: 15px;
 $btn-border-radius-lg: $border-radius;
 
-//link
 
+//link
 $link-color: #428bca;
 
 
 //input
-
 $input-placeholder-color: #aaaaaa;
 $input-padding-x: 35px;
 $input-padding-x-lg: 15px;
@@ -49,29 +51,47 @@ $input-border-radius-lg: $border-radius;
 $input-border-color: rgba(213, 212, 212, 0.21);
 $input-focus-border-color: #66afe9;
 
-//color
 
+//color
 $primary: #5170dd;
 $dark-blue: #2c3e50;
-
 
 $theme-colors: ();
 
 
 //navbar
-
 $navbar-light-active-color: $primary;
 $navbar-light-hover-color: $primary;
 $navbar-light-color: #000000;
+$navbar-logo-size: 100px;
 
 
 //carousel
-
 $carousel-caption-color: auto;
+
+
+//pricing-slice
+$pricing-card-body-height: 380px;
+
+
+//img
+$width-more-height-md: 200px;
+$height-more-width-md: 200px;
+$width-less-height-md: 100%;
+$height-less-width-md: 100%;
+
+$width-more-height-sm: 100px;
+$height-more-width-sm: 100px;
+$width-less-height-sm: 100%;
+$height-less-width-sm: 100%;
+
+$width-more-height-lg: 1200px;
+$height-more-width-lg: 1200px;
+$width-less-height-lg: 100%;
+$height-less-width-lg: 100%;
 
 /*
 // Color system
-
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;

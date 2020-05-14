@@ -26,7 +26,7 @@ export const Pricing = ({ slice }) => {
                   </div>
                   <div className="card-body pricing-slice-card-body pb-5">
                     <div className="text-center">
-                      <h3 className="text-dark-blue mb-4">
+                      <h3 className="mb-4">
                         {plan.plan_price}
                         { plan.plan_free ? null : (
                           <small
@@ -38,11 +38,11 @@ export const Pricing = ({ slice }) => {
                       </h3>
                       <CustomLink
                         link={plan.link}
-                        className={`btn btn-sm mb-4 pricing-slice-btn ${getLinkClass(plan.link_style, "link")}`}>
+                        className={`btn btn-sm mb-4 ${getLinkClass(plan.link_style, "link")}`}>
                         {plan.link_text}
                       </CustomLink>
                       <h5 className="mb-4 text-secondary font-weight-normal">Included</h5>
-                      <RichText render={plan.plan_features} className="plan-features"/>
+                      <RichText render={plan.plan_features} className="text-center text-lg-left mx-4"/>
                     </div>
                   </div>
                 </div>

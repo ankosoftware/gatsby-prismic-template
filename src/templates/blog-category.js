@@ -62,7 +62,7 @@ export const query = graphql`
             allBlogPages {
                 edges {
                     node {
-                        text_content
+                        text
                         body {
                             ... on PRISMIC_BlogPageBodyItems_collection {
                                 label

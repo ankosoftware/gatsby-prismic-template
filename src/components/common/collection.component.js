@@ -13,7 +13,7 @@ export const Collection = ({ type, items }) => {
               return (
                 <div className="d-flex flex-wrap flex-md-nowrap">
                   <div className="features-accordion-image">
-                    <Image width="200px" alt="img" image={item.image}/>
+                    <Image alt="img" image={item.image}/>
                   </div>
                   <div className="mx-0 mx-md-5 mt-3 mt-md-0">
                     <RichText render={item.text}/>
@@ -72,17 +72,17 @@ export const Collection = ({ type, items }) => {
           )
         case "list-image":
           return (
-            <div className="feature-slice">
+            <div>
               {items.map((item) => {
                 return (
                   <div className="d-flex flex-wrap flex-md-nowrap mb-4">
                     <div className="list-image-img mx-auto mx-md-0 mb-4 mb-md-0">
                       <Image image={item.image}/>
                     </div>
-                    <div className="ml-0 ml-md-5 mb-3 mw-737">
+                    <div className="ml-0 ml-md-5 mb-3">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
-                      <div className="feature-list-btn">
+                      <div className="">
                         <CustomLink
                           link={item.link}
                           className={getLinkClass(item.link_style, "link")}>
@@ -124,11 +124,11 @@ export const Collection = ({ type, items }) => {
               {items.map(item => {
                 return (
               <div className="d-flex mb-5 col-1-mixed align-items-center">
-                    <div className="col-1-image">
+                    <div className="col-1-img">
                       <Image image={item.image}/>
                     </div>
                     <div className="col-1-content">
-                  <div className="text-content col-1-text">
+                  <div className="">
                         <div className="mb-4">
                           <RichText render={item.title}/>
                         </div>
@@ -165,18 +165,18 @@ export const Collection = ({ type, items }) => {
           )
         case "col-3-detailed":
           return (
-            <div className="row cols-items feature-slice">
+            <div className="row">
               {items.map(item => {
                 return (
                   <div className="col-12 col-md-4 mb-4">
-                    <div className="mx-auto mb-4">
+                    <div className="mx-auto mb-4 col-3-img">
                       <Image image={item.image}/>
                     </div>
                     <div className="mb-5 text-content text-center">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                     </div>
-                    <div>
+                    <div className="text-center">
                       <CustomLink
                         link={item.link}
                         className={getLinkClass(item.link_style, "link")}>
@@ -190,18 +190,18 @@ export const Collection = ({ type, items }) => {
           )
         case "col-4-detailed":
           return (
-            <div className="row cols-items feature-slice">
+            <div className="row">
               {items.map(item => {
                 return (
                   <div className="col-6 col-md-3 mb-4">
-                    <div className="mx-auto mb-4">
+                    <div className="mx-auto mb-4 col-4-img">
                       <Image image={item.image}/>
                     </div>
                     <div className="mb-5 text-content text-left">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                     </div>
-                    <div>
+                    <div className="text-center">
                       <CustomLink
                         link={item.link}
                         className={getLinkClass(item.link_style, "link")}>
@@ -215,11 +215,11 @@ export const Collection = ({ type, items }) => {
           )
         case "col-4-detailed-small-image":
           return (
-            <div className="row cols-items col-4-small-items feature-slice">
+            <div className="row">
               {items.map(item => {
                 return (
                   <div className="d-flex col-6 col-md-3 mb-4">
-                    <div className="mx-auto mb-4">
+                    <div className="mx-auto mb-4 col-4-small-img">
                       <Image image={item.image}/>
                     </div>
                     <div>
@@ -227,7 +227,7 @@ export const Collection = ({ type, items }) => {
                         <RichText render={item.title}/>
                         <RichText render={item.text}/>
                       </div>
-                      <div>
+                      <div className="text-center">
                         <CustomLink
                           link={item.link}
                           className={getLinkClass(item.link_style, "link")}>
@@ -242,28 +242,27 @@ export const Collection = ({ type, items }) => {
           )
         case "block-3-detailed":
           return (
-            <div className="row cols-items feature-slice">
+            <div className="row">
               {items.map(item => {
                 return (
-                  <div className="mx-auto">
-                    <div className="col-12 col-md-4 mb-4 block-3-wrapper shadow-sm">
-                      <div className="line bg-primary mb-4"></div>
-                      <div className="mx-auto mb-4">
+                    <div className="col-12 col-md-4 mb-4">
+                      <div className="py-3 shadow">
+                      <div className="mx-auto mb-4 block-3-img text-center">
                         <Image image={item.image}/>
                       </div>
                       <div className="mb-5 text-content text-center">
                         <RichText render={item.title}/>
                         <RichText render={item.text}/>
                       </div>
-                      <div>
+                      <div className="text-center">
                         <CustomLink
                           link={item.link}
                           className={getLinkClass(item.link_style, "link")}>
                           {item.link_text}
                         </CustomLink>
                       </div>
+                      </div>
                     </div>
-                  </div>
                 )
               })}
             </div>

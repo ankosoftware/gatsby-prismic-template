@@ -57,7 +57,7 @@ export const query = graphql`
                             lastPublicationDate
                         }
                         title
-                        content
+                        text_content
                         image
                         body {
                             ... on PRISMIC_BlogPostBodyPricing_plans {

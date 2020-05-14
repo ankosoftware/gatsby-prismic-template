@@ -28,8 +28,33 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-prismic-graphql",
+      options: {
+        repositoryName: "anko-template",
+        path: "/preview",
+        previews: true,
+        pages: [
+          {
+            type: "BlogPost",
+            match: "/blog/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/blog-post.js"),
+          },
+          {
+            type: "LandingPage",
+            match: "/landing/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/landing-page.js"),
+          },
+          {
+            type: "ContentPage",
+            match: "/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/content-page.js"),
+          },
+        ],
+      },
+    },
   ],
 }

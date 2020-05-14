@@ -62,7 +62,7 @@ export const query = graphql`
             allBlogPages {
                 edges {
                     node {
-                        text_content
+                        text
                         body {
                             ... on PRISMIC_BlogPageBodyPricing_plans {
                                 type
