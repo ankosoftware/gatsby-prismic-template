@@ -4,8 +4,8 @@
 }
 
 .height-more-width-md {
-  width: $width-less-height-md;
-  height: $height-more-width-md;
+  max-width: $width-less-height-md;
+  max-height: $height-more-width-md;
   object-fit: contain;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .height-more-width-sm {
-  width: $width-less-height-sm;
-  height: $height-more-width-sm;
+  max-width: $width-less-height-sm;
+  max-height: $height-more-width-sm;
   object-fit: contain;
 }

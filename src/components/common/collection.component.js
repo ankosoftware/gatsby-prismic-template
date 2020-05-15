@@ -29,22 +29,6 @@ export const Collection = ({ type, items }) => {
               )
             }}/>
           )
-        case "gallery":
-          return (
-            <div className="container our-partner-wrapper">
-              <div className="mx-auto w-90">
-                <div className="row our-partner-item">
-                  {items.map(item => {
-                    return (
-                      <div className="our-partner-col col-sm-6 col-md-3">
-                        <Image image={item.image}/>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
-          )
         case "list-numbered":
           return (
             <div>
@@ -124,23 +108,21 @@ export const Collection = ({ type, items }) => {
               {items.map(item => {
                 return (
               <div className="d-flex mb-5 col-1-mixed align-items-center">
-                    <div className="col-1-img">
+                    <div className="col-1-img mx-auto">
                       <Image image={item.image}/>
                     </div>
-                    <div className="col-1-content">
-                  <div className="">
+                    <div className="col-1-body">
                         <div className="mb-4">
                           <RichText render={item.title}/>
                         </div>
                         <RichText render={item.text}/>
-                      </div>
                       <CustomLink
                         link={item.link}
                         className={getLinkClass(item.link_style, "link")}>
                         {item.link_text}
                       </CustomLink>
                     </div>
-                  </div>
+                    </div>
                 )
               })}
             </div>
@@ -154,9 +136,11 @@ export const Collection = ({ type, items }) => {
                     <div className="col-2-small-img">
                       <Image image={item.image}/>
                     </div>
+                    <div className="col-2-small-body">
                     <div className="ml-4 mb-3">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
+                    </div>
                     </div>
                   </div>
                 )
@@ -172,6 +156,7 @@ export const Collection = ({ type, items }) => {
                     <div className="mx-auto mb-4 col-3-img">
                       <Image image={item.image}/>
                     </div>
+                    <div className="col-3-body">
                     <div className="mb-5 text-content text-center">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
@@ -182,6 +167,7 @@ export const Collection = ({ type, items }) => {
                         className={getLinkClass(item.link_style, "link")}>
                         {item.link_text}
                       </CustomLink>
+                    </div>
                     </div>
                   </div>
                 )
@@ -197,7 +183,8 @@ export const Collection = ({ type, items }) => {
                     <div className="mx-auto mb-4 col-4-img">
                       <Image image={item.image}/>
                     </div>
-                    <div className="mb-5 text-content text-left">
+                    <div className="col-4-body">
+                    <div className="mb-5">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                     </div>
@@ -207,6 +194,7 @@ export const Collection = ({ type, items }) => {
                         className={getLinkClass(item.link_style, "link")}>
                         {item.link_text}
                       </CustomLink>
+                    </div>
                     </div>
                   </div>
                 )
@@ -222,7 +210,7 @@ export const Collection = ({ type, items }) => {
                     <div className="mx-auto mb-4 col-4-small-img">
                       <Image image={item.image}/>
                     </div>
-                    <div>
+                    <div className="ml-3 col-4-small-body">
                       <div className="mb-5 text-content text-left">
                         <RichText render={item.title}/>
                         <RichText render={item.text}/>
@@ -246,10 +234,11 @@ export const Collection = ({ type, items }) => {
               {items.map(item => {
                 return (
                     <div className="col-12 col-md-4 mb-4">
-                      <div className="py-3 shadow">
+                      <div className="py-4 shadow">
                       <div className="mx-auto mb-4 block-3-img text-center">
                         <Image image={item.image}/>
                       </div>
+                        <div className="block-3-body">
                       <div className="mb-5 text-content text-center">
                         <RichText render={item.title}/>
                         <RichText render={item.text}/>
@@ -261,6 +250,7 @@ export const Collection = ({ type, items }) => {
                           {item.link_text}
                         </CustomLink>
                       </div>
+                        </div>
                       </div>
                     </div>
                 )
