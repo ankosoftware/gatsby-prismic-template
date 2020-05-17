@@ -1,7 +1,7 @@
 import React from "react"
-import { RichText } from "prismic-reactjs"
 import { Section } from "../common/section.component"
 import { Collection } from "../common/collection.component"
+import { RichText } from "../common/rich-text.component"
 
 export const Features = ({ slice }) => {
 
@@ -11,9 +11,9 @@ export const Features = ({ slice }) => {
   return (
     <Section className="section" backgroundImage={backgroundImage} backgroundColor={backgroundColor}>
       <div className={`features-slice ${label ? "features-slice-" + label : ""}`}>
-        <div className="text-center mb-5">
+        <div className="text-center py-5">
+          <RichText render={primary.title}/>
           <RichText render={primary.text}/>
-          <div className="separator"></div>
         </div>
         <Collection items={fields} type={label}/>
       </div>

@@ -141,6 +141,13 @@ export const Collection = ({ type, items }) => {
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                     </div>
+                      <div className="mb-4 ml-4">
+                        <CustomLink
+                          link={item.link}
+                          className={getLinkClass(item.link_style, "link")}>
+                          {item.link_text}
+                        </CustomLink>
+                      </div>
                     </div>
                   </div>
                 )
@@ -179,7 +186,7 @@ export const Collection = ({ type, items }) => {
             <div className="row">
               {items.map(item => {
                 return (
-                  <div className="col-6 col-md-3 mb-4">
+                  <div className="col-12 col-md-3 mb-4">
                     <div className="mx-auto mb-4 col-4-img">
                       <Image image={item.image}/>
                     </div>
@@ -206,7 +213,7 @@ export const Collection = ({ type, items }) => {
             <div className="row">
               {items.map(item => {
                 return (
-                  <div className="d-flex col-6 col-md-3 mb-4">
+                  <div className="d-flex col-12 col-md-3 mb-4">
                     <div className="mx-auto mb-4 col-4-small-img">
                       <Image image={item.image}/>
                     </div>
@@ -273,10 +280,19 @@ export const Collection = ({ type, items }) => {
                   {items.map((item, index) => {
                     return (
                       <div className={index === 0 ? "carousel-item active" : "carousel-item"}>
+                        <div className="text-center">
                         <Image image={item.image}/>
-                        <div className="carousel-caption position-static d-block mb-5 mw-737 mx-auto">
+                        </div>
+                        <div className="carousel-caption position-static d-block mx-auto">
                           <RichText render={item.title}/>
                           <RichText render={item.text}/>
+                          <div className="text-center mb-5">
+                            <CustomLink
+                              link={item.link}
+                              className={getLinkClass(item.link_style, "link")}>
+                              {item.link_text}
+                            </CustomLink>
+                          </div>
                         </div>
                       </div>
                     )

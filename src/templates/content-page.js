@@ -172,6 +172,7 @@ export const query = graphql`
                                     bg_color
                                     bg_image
                                     text
+                                    title
                                 }
                                 fields {
                                     image

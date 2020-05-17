@@ -40,24 +40,24 @@ export const linkFragment = graphql`
                         type
                         uid
                     }
-#                    parent {
-#                        ... on PRISMIC_ContentPage {
-#                            _meta {
-#                                type
-#                                uid
-#                                lang
-#                            }
-#                            parent {
-#                                ... on PRISMIC_ContentPage {
-#                                    _meta {
-#                                        type
-#                                        uid
-#                                        lang
-#                                    }
-#                                }
-#                            }
-#                        }
-#                    }
+                    parent {
+                        ... on PRISMIC_ContentPage {
+                            _meta {
+                                type
+                                uid
+                                lang
+                            }
+                            parent {
+                                ... on PRISMIC_ContentPage {
+                                    _meta {
+                                        type
+                                        uid
+                                        lang
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

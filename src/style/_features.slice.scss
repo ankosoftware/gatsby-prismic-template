@@ -88,7 +88,12 @@
   }
   .btn {
     min-width: $col-1-btn-width;
-    //@extend $col-1-btn-size;
+    @if $col-1-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $col-1-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -137,7 +142,12 @@
   }
   .btn {
     min-width: $col-2-small-btn-width;
-    //@extend $col-4-btn-size;
+    @if $col-2-small-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $col-2-small-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -166,7 +176,12 @@
   }
   .btn {
     min-width: $col-3-btn-width;
-    //@extend $col-4-btn-size;
+    @if $col-3-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $col-3-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -195,7 +210,12 @@
   }
   .btn {
     min-width: $col-4-btn-width;
-    //@extend $col-4-btn-size;
+    @if $col-4-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $col-4-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -203,7 +223,7 @@
 .col-4-small-img {
   min-width: $col-4-small-image-width;
   width: $col-4-small-image-width;
-  text-align: center;
+  text-align: right;
   img {
     max-height: $col-4-small-image-height;
     max-width: $col-4-small-image-width;
@@ -220,7 +240,12 @@
   }
   .btn {
     min-width: $col-4-small-btn-width;
-    //@extend $col-4-btn-size;
+    @if $col-4-small-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $col-4-small-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -249,7 +274,12 @@
   }
   .btn {
     min-width: $block-3-btn-width;
-    //@extend $col-4-btn-size;
+    @if $block-3-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $block-3-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
@@ -265,5 +295,26 @@
         transform: translateY(-50%);
       }
     }
+  }
+}
+
+.section-light {
+  .carousel-indicators {
+    li {
+      background-color: $body-color;
+      &.active {
+        background-color: $body-color;
+        &:before {
+          background-color: $body-color;
+        }
+      }
+    }
+  }
+  .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23565656' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23565656' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
   }
 }
