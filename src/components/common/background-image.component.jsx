@@ -1,6 +1,6 @@
 import React from 'react';
 import BackgroundImage from 'gatsby-background-image';
-import PropTypes from 'prop-types';
+
 
 export const Background = ({image, className, style, children}) => {
     if(style && style.backgroundColor) {

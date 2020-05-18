@@ -68,6 +68,24 @@ $pricing-card-body-height: 380px;
 
 
 //feature-slice
+$feature-accordion-image-width: 150px;
+$feature-accordion-image-fit: contain;
+$feature-accordion-image-height: 100%;
+$feature-accordion-title-align: left;
+$feature-accordion-text-align: left;
+$feature-accordion-btn-width: 120px;
+$feature-accordion-btn-size: sm;
+
+
+$feature-list-image-width: 150px;
+$feature-list-image-fit: contain;
+$feature-list-image-height: 100%;
+$feature-list-title-align: left;
+$feature-list-text-align: left;
+$feature-list-btn-width: 120px;
+$feature-list-btn-size: md;
+
+
 $col-1-image-width: 320px;
 $col-1-image-fit: contain;
 $col-1-image-height: 300px;
@@ -122,20 +140,51 @@ $block-3-btn-width: 120px;
 $block-3-btn-size: md;
 
 
-$width-more-height-md: 200px;
-$height-more-width-md: 200px;
-$width-less-height-md: 100%;
-$height-less-width-md: 100%;
+//blog-with-image-slice
+$block-content-right-image-width: 100%;
+$block-content-right-image-fit: contain;
+$block-content-right-image-height: 300px;
+$block-content-right-title-align: left;
+$block-content-right-text-align: left;
+$block-content-right-btn-width: 120px;
+$block-content-right-btn-size: lg;
 
-$width-more-height-sm: 100px;
-$height-more-width-sm: 100px;
-$width-less-height-sm: 100%;
-$height-less-width-sm: 100%;
 
-$width-more-height-lg: 1200px;
-$height-more-width-lg: 1200px;
-$width-less-height-lg: 100%;
-$height-less-width-lg: 100%;
+$block-content-right-bg-image-width: 100%;
+$block-content-right-bg-image-size: contain;
+$block-content-right-bg-image-height: 300px;
+$block-content-right-bg-title-align: left;
+$block-content-right-bg-text-align: left;
+$block-content-right-bg-btn-width: 120px;
+$block-content-right-bg-btn-size: lg;
+
+
+$block-content-left-bg-image-width: 100%;
+$block-content-left-bg-image-size: contain;
+$block-content-left-bg-image-height: 300px;
+$block-content-left-bg-image-repeat: no-repeat;
+$block-content-left-bg-title-align: left;
+$block-content-left-bg-text-align: left;
+$block-content-left-bg-btn-width: 120px;
+$block-content-left-bg-btn-size: lg;
+
+
+$block-content-left-image-width: 100%;
+$block-content-left-image-fit: contain;
+$block-content-left-image-height: 300px;
+$block-content-left-title-align: left;
+$block-content-left-text-align: left;
+$block-content-left-btn-width: 120px;
+$block-content-left-btn-size: lg;
+
+
+$block-content-top-image-width: 100%;
+$block-content-top-image-fit: contain;
+$block-content-top-image-height: 300px;
+$block-content-top-title-align: center;
+$block-content-top-text-align: center;
+$block-content-top-btn-width: 120px;
+$block-content-top-btn-size: lg;
 
 /*
 // Color system

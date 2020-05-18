@@ -11,20 +11,19 @@ export const BlockWithImage = ({ slice }) => {
   const bgColor = slice.primary && slice.primary.bg_color
   const minHeight = slice.primary && slice.primary.min_height
   return (
-    <Section className="d-flex align-items-center" backgroundImage={bgImage} backgroundColor={bgColor} minHeight={minHeight}>
+    <Section className="d-flex align-items-center py-5" backgroundImage={bgImage} backgroundColor={bgColor} minHeight={minHeight}>
       {
         (() => {
       switch (slice.label) {
         case 'content-right':
           return  (
             <div className="row align-items-center">
-              <div className="col-12 col-md-6 block-with-image-img">
+              <div className="col-12 col-md-6 block-content-right-img">
                 <Image image={slice.primary.image}/>
               </div>
-              <div className="col-12 col-md-6 mt-4 mt-md-0">
-                <div className="mw-690 mb-4">
+              <div className="col-12 col-md-6 mt-4 mt-md-0 block-content-right-body">
+                <div className="mb-4">
                   <RichText render={slice.primary.title}/>
-                  <div className="separator mx-0 mb-0"></div>
                 </div>
                 <RichText render={slice.primary.text}/>
                 <CustomLink
@@ -39,12 +38,11 @@ export const BlockWithImage = ({ slice }) => {
           return (
             <div className="row">
               <Background
-                image={slice.primary.image} className="content-bg-image col-12 col-md-6 mb-3 mb-md-0">
+                image={slice.primary.image} className="block-content-right-bg-img col-12 col-md-6 mb-3 mb-md-0">
               </Background>
-              <div className="col-12 col-md-6">
-                <div className="mw-690 mb-4">
+              <div className="col-12 col-md-6 block-content-right-bg-body">
+                <div className="mb-4">
                   <RichText render={slice.primary.title}/>
-                  <div className="separator mx-0 mb-0"></div>
                 </div>
                 <RichText render={slice.primary.text}/>
                 <CustomLink
@@ -58,10 +56,9 @@ export const BlockWithImage = ({ slice }) => {
         case 'content-left':
           return (
             <div className="row align-items-center">
-              <div className="col-12 col-md-6">
-                <div className="mw-690 mb-4">
+              <div className="col-12 col-md-6 block-content-left-body">
+                <div className="mb-4">
                   <RichText render={slice.primary.title}/>
-                  <div className="separator mx-0 mb-0"></div>
                 </div>
                 <RichText render={slice.primary.text}/>
                 <CustomLink
@@ -70,7 +67,7 @@ export const BlockWithImage = ({ slice }) => {
                   {slice.primary.link_text}
                 </CustomLink>
               </div>
-              <div className="col-12 col-md-6 mt-4 mt-md-0 block-with-image-img">
+              <div className="col-12 col-md-6 mt-4 mt-md-0 block-content-left-img">
                 <Image image={slice.primary.image}/>
               </div>
             </div>
@@ -78,10 +75,9 @@ export const BlockWithImage = ({ slice }) => {
         case 'content-left-bg':
           return (
             <div className="row">
-              <div className="col-12 col-md-6">
-                  <div className="mw-690 mb-4">
+              <div className="col-12 col-md-6 block-content-left-bg-body">
+                  <div className="mb-4">
                     <RichText render={slice.primary.title}/>
-                    <div className="separator mx-0 mb-0"></div>
                   </div>
                 <RichText render={slice.primary.text}/>
                 <CustomLink
@@ -91,30 +87,27 @@ export const BlockWithImage = ({ slice }) => {
                 </CustomLink>
               </div>
               <Background
-                image={slice.primary.image} className="content-bg-image col-12 col-md-6 mt-3 mb-mt-0">
+                image={slice.primary.image} className="block-content-left-bg-img col-12 col-md-6 mt-3 mb-mt-0">
               </Background>
             </div>
           )
         default:
         return (
-          <div className="block-with-image-block text-center">
-              <div className="mw-690 mb-4 mx-auto">
+          <div className="text-center block-content-top-body">
+              <div className="mb-4">
               <RichText render={slice.primary.title}/>
-              <div className="separator mb-0"></div>
               </div>
               <div className="block-with-image-text">
                 <RichText render={slice.primary.text}/>
               </div>
-            <div className="mx-auto block-with-image-img">
+            <div className="block-content-top-img">
               <Image image={slice.primary.image}/>
             </div>
-            <div>
               <CustomLink
                 link={slice.primary.link}
                 className={getLinkClass(slice.primary.link_style, "link")}>
                 {slice.primary.link_text}
               </CustomLink>
-            </div>
           </div>
         )
       }

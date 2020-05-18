@@ -1,17 +1,53 @@
-.features-accordion-image {
+//features-accordion
+.features-accordion-img {
+  margin-right: 70px;
+  .gatsby-image-wrapper {
+    width: $feature-accordion-image-width;
+    height: $feature-accordion-image-height;
+  }
   img {
-    @extend .width-more-height-md;
+    max-width: $feature-accordion-image-width;
+    max-height: $feature-accordion-image-height;
+    object-fit: $feature-accordion-image-fit;
   }
 }
 
-.list-image-img {
-  img {
-    @extend .width-more-height-md;
+.features-accordion-body {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: $feature-accordion-title-align;
+  }
+  p {
+    text-align: $feature-accordion-text-align;
+  }
+  .btn {
+    min-width: $feature-accordion-btn-width;
+    @if $feature-accordion-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $feature-accordion-btn-size == lg {
+      @extend .btn-lg;
+    }
   }
 }
 
+.accordion-item {
+  cursor: pointer;
+}
+
+.accordion-icon {
+  font-family: "Material Icons Round", sans-serif;
+  font-style: normal;
+  font-size: 28px;
+  font-weight: lighter;
+  color: $gray-400;
+  vertical-align: middle;
+  line-height: 45px;
+}
+
+
+//feature-list
 .list-numbered-number-block {
-  @extend .width-more-height-md;
+  width: $feature-list-image-width;
   font-size: 40px;
   font-weight: 500;
   .number {
@@ -23,8 +59,16 @@
   }
 }
 
+
+.list-image-img {
+  img {
+    width: $feature-list-image-width;;
+  }
+}
+
+
 .features-slice-list-process {
-  margin-left: 230px;
+  margin-left: 150px;
   @include media-breakpoint-down(lg) {
     margin-left: 0;
   }
@@ -66,6 +110,26 @@
   }
 }
 
+.feature-list-body {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: $feature-list-title-align;
+  }
+  p {
+    text-align: $feature-list-text-align;
+  }
+  .btn {
+    min-width: $feature-accordion-btn-width;
+    @if $feature-list-btn-width == sm {
+      @extend .btn-sm;
+    }
+    @if $feature-list-btn-size == lg {
+      @extend .btn-lg;
+    }
+  }
+}
+
+
+//col-1-detailed
 .col-1-img {
   margin-right: 70px;
   .gatsby-image-wrapper {
@@ -122,6 +186,8 @@
   }
 }
 
+
+//col-2-small
 .col-2-small-img {
   min-width: $col-2-small-image-width;
   width: $col-2-small-image-width;
@@ -152,6 +218,7 @@
 }
 
 
+//col-3-detailed
 .col-3-img {
   height: $col-3-image-height;
   text-align: center;
@@ -186,6 +253,7 @@
 }
 
 
+//col-4-detailed
 .col-4-img {
   height: $col-4-image-height;
   text-align: center;
@@ -220,6 +288,7 @@
 }
 
 
+//col-4-small
 .col-4-small-img {
   min-width: $col-4-small-image-width;
   width: $col-4-small-image-width;
@@ -250,6 +319,7 @@
 }
 
 
+//block-3-detailed
 .block-3-img {
   height: $block-3-image-height;
   text-align: center;
@@ -284,6 +354,7 @@
 }
 
 
+//feature-carousel
 .feature-carousel {
   .carousel-inner {
     .gatsby-image-wrapper {

@@ -12,10 +12,10 @@ export const Collection = ({ type, items }) => {
             <Accordion items={items} renderContent={item => {
               return (
                 <div className="d-flex flex-wrap flex-md-nowrap">
-                  <div className="features-accordion-image">
+                  <div className="features-accordion-img">
                     <Image alt="img" image={item.image}/>
                   </div>
-                  <div className="mx-0 mx-md-5 mt-3 mt-md-0">
+                  <div className="mx-0 mx-md-5 mt-3 mt-md-0 features-accordion-body">
                     <RichText render={item.text}/>
                     <div>
                       <CustomLink
@@ -38,7 +38,7 @@ export const Collection = ({ type, items }) => {
                     <div className="list-numbered-number-block">
                       <div className="number">{index + 1}</div>
                     </div>
-                    <div className="ml-0 ml-md-5 mw-737">
+                    <div className="ml-0 ml-md-5 feature-list-body">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                       <div className="feature-list-btn">
@@ -63,7 +63,7 @@ export const Collection = ({ type, items }) => {
                     <div className="list-image-img mx-auto mx-md-0 mb-4 mb-md-0">
                       <Image image={item.image}/>
                     </div>
-                    <div className="ml-0 ml-md-5 mb-3">
+                    <div className="ml-0 ml-md-5 mb-3 feature-list-body">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                       <div className="">
@@ -86,7 +86,7 @@ export const Collection = ({ type, items }) => {
                 return (
                   <div className="d-flex mb-4 position-relative list-process-item">
                     <div className="process-circle"></div>
-                    <div className="ml-5">
+                    <div className="ml-5 feature-list-body">
                       <RichText render={item.title}/>
                       <RichText render={item.text}/>
                       <div className="feature-list-btn">
