@@ -7,6 +7,7 @@ import { ScriptSlice } from "./slices/script.slice"
 import { TextSlice } from "./slices/text.slice"
 import { ItemsCollection } from "./slices/items-collection.slice"
 import { Pricing } from "./slices/pricing.slice"
+import { MenuSlice } from "./slices/menu.slice"
 
 
 export const Slices = ({ body }) => {
@@ -28,6 +29,8 @@ export const Slices = ({ body }) => {
             return <TextSlice slice={slice}/>
           case 'pricing_plans':
             return <Pricing slice={slice}/>
+          case 'menu':
+            return <MenuSlice slice={slice}/>
           default:
             return <DefaultSlice slice={slice}/>
         }

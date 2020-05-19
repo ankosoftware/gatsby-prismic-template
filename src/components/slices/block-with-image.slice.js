@@ -100,7 +100,7 @@ export const BlockWithImage = ({ slice }) => {
               <div className="block-with-image-text">
                 <RichText render={slice.primary.text}/>
               </div>
-            <div className="block-content-top-img">
+            <div className={`block-content-top-img ${!slice.primary.image ? "no-image" : ""}`}>
               <Image image={slice.primary.image}/>
             </div>
               <CustomLink

@@ -59,6 +59,12 @@ $navbar-light-color: #000000;
 $navbar-logo-size: 100px;
 
 
+//footer
+$navbar-logo-footer-size: 100px;
+$navbar-menu-title-footer-size: 20px;
+$navbar-menu-title-footer-border: 1px solid #b4b4b4;
+
+
 //carousel
 $carousel-caption-color: auto;
 
@@ -151,8 +157,8 @@ $block-content-right-btn-size: lg;
 
 
 $block-content-right-bg-image-width: 100%;
-$block-content-right-bg-image-size: contain;
-$block-content-right-bg-image-height: 300px;
+$block-content-right-bg-image-size: cover;
+$block-content-right-bg-image-height: 200px;
 $block-content-right-bg-title-align: left;
 $block-content-right-bg-text-align: left;
 $block-content-right-bg-btn-width: 120px;
@@ -160,8 +166,8 @@ $block-content-right-bg-btn-size: lg;
 
 
 $block-content-left-bg-image-width: 100%;
-$block-content-left-bg-image-size: contain;
-$block-content-left-bg-image-height: 300px;
+$block-content-left-bg-image-size: cover;
+$block-content-left-bg-image-height: 200px;
 $block-content-left-bg-image-repeat: no-repeat;
 $block-content-left-bg-title-align: left;
 $block-content-left-bg-text-align: left;

@@ -930,7 +930,7 @@ type PRISMIC_ContentPageBodyFeaturePrimary {
     bg_image: PRISMIC_Json
     bg_imageSharp(crop: String): File
     text: PRISMIC_Json
-    tiltle: PRISMIC_Json
+    title: PRISMIC_Json
 }
 
 type PRISMIC_ContentPageBodyForm {
@@ -1671,6 +1671,8 @@ type SitePageContext {
     paginationPreviousLang: String
     paginationPreviousMeta: SitePageContextPaginationPreviousMeta
     paginationPreviousUid: String
+    prismicAllPagePaths: [String]
+    prismicPreviewPage: Boolean
     rootQuery: String
     type: String
     uid: String
@@ -2755,6 +2757,8 @@ enum SitePageFieldsEnum {
     context___paginationPreviousMeta___type
     context___paginationPreviousMeta___uid
     context___paginationPreviousUid
+    context___prismicAllPagePaths
+    context___prismicPreviewPage
     context___rootQuery
     context___type
     context___uid
@@ -3399,6 +3403,8 @@ input SitePageContextFilterInput {
     paginationPreviousLang: StringQueryOperatorInput
     paginationPreviousMeta: SitePageContextPaginationPreviousMetaFilterInput
     paginationPreviousUid: StringQueryOperatorInput
+    prismicAllPagePaths: StringQueryOperatorInput
+    prismicPreviewPage: BooleanQueryOperatorInput
     rootQuery: StringQueryOperatorInput
     type: StringQueryOperatorInput
     uid: StringQueryOperatorInput

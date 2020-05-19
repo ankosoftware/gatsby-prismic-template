@@ -1,0 +1,28 @@
+.navbar-logo-footer {
+  img {
+    width: $navbar-logo-footer-size;
+  }
+}
+
+footer {
+  .menu-slice {
+    .nav-item {
+
+    }
+    .nav-link {
+      padding: 0;
+    }
+  }
+  .nav-title {
+    border-bottom: $navbar-menu-title-footer-border;
+    font-size: $navbar-menu-title-footer-size;
+  }
+}
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  @include media-breakpoint-down(sm) {
+    left: $navbar-logo-footer-size + 20px;
+  }
+}

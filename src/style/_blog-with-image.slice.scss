@@ -73,6 +73,12 @@
     object-fit: $block-content-top-image-fit;
     max-width: $block-content-top-image-width;
   }
+  &.no-image {
+    height: 0;
+    img {
+      min-height: 0;
+    }
+  }
 }
 
 .block-content-top-body {
@@ -95,16 +101,9 @@
 
 
 .block-content-left-bg-img {
-  .gatsby-image-wrapper {
-    background-repeat: no-repeat;
-  }
-  img {
-    background-repeat: no-repeat;
     width: $block-content-left-bg-image-width;
     background-size: $block-content-left-bg-image-size;
     min-height: $block-content-left-bg-image-height;
-
-  }
 }
 
 .block-content-left-bg-body {
@@ -120,6 +119,31 @@
       @extend .btn-sm;
     }
     @if $block-content-left-bg-btn-size == lg {
+      @extend .btn-lg;
+    }
+  }
+}
+
+
+.block-content-right-bg-img {
+  width: $block-content-right-bg-image-width;
+  background-size: $block-content-right-bg-image-size;
+  min-height: $block-content-right-bg-image-height;
+}
+
+.block-content-right-bg-body {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: $block-content-right-bg-title-align;
+  }
+  p {
+    text-align: $block-content-right-bg-text-align;
+  }
+  .btn {
+    min-width: $block-content-right-btn-width;
+    @if $block-content-right-bg-btn-size == sm {
+      @extend .btn-sm;
+    }
+    @if $block-content-right-bg-btn-size == lg {
       @extend .btn-lg;
     }
   }

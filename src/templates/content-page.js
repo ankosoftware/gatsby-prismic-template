@@ -21,7 +21,7 @@ const ContentPage = ({uri, data}) => {
           <LayoutComponent>
               <Section backgroundImage={page.node.background_image} backgroundColor={page.node.background_color}>
                   <Header theme={dark ? 'dark' : 'light'}/>
-                  <div className="py-5 text-center">
+                  <div className="mt-10 pb-5 text-center">
                       <RichText render={page.node.title} linkResolver={linkResolver} />
                   </div>
                 <div className="text-center">
