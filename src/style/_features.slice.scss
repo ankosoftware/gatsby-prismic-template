@@ -81,7 +81,7 @@
     margin-left: -49px;
     height: 15px;
     border-radius: 50%;
-    background-color: $dark-blue;
+    background-color: $primary;
 
     &:after {
       content: '';
@@ -90,7 +90,7 @@
       bottom: -26px;
       left: -44px;
       width: 4px;
-      background-color: $dark-blue;
+      background-color: $primary;
     }
 
     @include media-breakpoint-down(md) {
@@ -334,6 +334,16 @@
     object-fit: $block-3-image-fit;
   }
 }
+
+.block-3-wrapper {
+  border-radius: $block-3-border-radius;
+  .line {
+    height: 5px;
+    border-top-right-radius: $block-3-border-radius;
+    border-top-left-radius: $block-3-border-radius;
+  }
+}
+
 
 .block-3-body {
   h1, h2, h3, h4, h5, h6 {

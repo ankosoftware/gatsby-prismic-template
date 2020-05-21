@@ -241,7 +241,8 @@ export const Collection = ({ type, items }) => {
               {items.map(item => {
                 return (
                     <div className="col-12 col-md-4 mb-4">
-                      <div className="py-4 shadow">
+                      <div className="pb-4 shadow block-3-wrapper">
+                        <div className="line bg-primary mb-4"></div>
                       <div className="mx-auto mb-4 block-3-img text-center">
                         <Image image={item.image}/>
                       </div>

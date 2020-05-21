@@ -1,0 +1,25 @@
+h2 {
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h2 {
+  color: $primary;
+  font-weight: $header-weight;
+}
+
+h3, h4 {
+  color: $blue;
+  font-weight: $header-weight;
+}
+
+p {
+  font-size: $p-font-size;
+}
