@@ -4,10 +4,11 @@
       "type" : "UID",
       "config" : {
         "label" : "Header ID",
-        "placeholder" : "Enter Header ID"
+        "placeholder" : "Enter Header ID",
+        "useAsTitle" : true
       }
     },
-    "logo_light" : {
+    "logo-light" : {
       "type" : "Image",
       "config" : {
         "constraint" : { },
@@ -15,7 +16,7 @@
         "label" : "Logo Light"
       }
     },
-    "logo_dark" : {
+    "logo-dark" : {
       "type" : "Image",
       "config" : {
         "constraint" : { },
@@ -23,7 +24,7 @@
         "label" : "Logo Dark"
       }
     },
-    "primary_navigation" : {
+    "primary-navigation" : {
       "type" : "Group",
       "config" : {
         "fields" : {
@@ -41,14 +42,14 @@
               "label" : "Link"
             }
           },
-          "link_text" : {
+          "link-text" : {
             "type" : "Text",
             "config" : {
               "label" : "Link Text",
               "placeholder" : "Enter Link Text"
             }
           },
-          "link_style" : {
+          "link-style" : {
             "type" : "Select",
             "config" : {
               "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
@@ -61,7 +62,7 @@
         "label" : "Primary Navigation"
       }
     },
-    "secondary_navigation" : {
+    "secondary-navigation" : {
       "type" : "Group",
       "config" : {
         "fields" : {
@@ -79,14 +80,14 @@
               "label" : "Link"
             }
           },
-          "link_text" : {
+          "link-text" : {
             "type" : "Text",
             "config" : {
               "label" : "Link Text",
               "placeholder" : "Enter Link Text"
             }
           },
-          "link_style" : {
+          "link-style" : {
             "type" : "Select",
             "config" : {
               "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
@@ -105,7 +106,7 @@
       "config" : {
         "labels" : { },
         "choices" : {
-          "custom_script" : {
+          "custom-script" : {
             "type" : "Slice",
             "fieldset" : "Custom Script",
             "description" : "Custom Script to embed to all HTML pages",
@@ -113,14 +114,14 @@
             "display" : "list",
             "non-repeat" : { },
             "repeat" : {
-              "script_html" : {
+              "script-html" : {
                 "type" : "Text",
                 "config" : {
                   "label" : "Script html",
                   "placeholder" : "Enter Script html"
                 }
               },
-              "script_url" : {
+              "script-url" : {
                 "type" : "Text",
                 "config" : {
                   "label" : "Script url",

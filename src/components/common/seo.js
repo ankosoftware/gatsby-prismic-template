@@ -7,37 +7,29 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import { convertRichTextToPlain } from "../../utils/text"
+import { getHTMLLang } from "../../utils/langs"
+import { DEFAULT_LANG } from "../../../propreties"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site.siteMetadata.description
-
+  if (typeof title === "object") {
+    title = convertRichTextToPlain(title)
+  }
+  if (typeof description === "object") {
+    description = convertRichTextToPlain(description)
+  }
+  lang = lang ? getHTMLLang(lang) : getHTMLLang(DEFAULT_LANG)
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
@@ -45,7 +37,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -56,16 +48,12 @@ function SEO({ description, lang, meta, title }) {
           content: `summary`,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
           name: `twitter:title`,
           content: title,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
       ].concat(meta)}
     />
