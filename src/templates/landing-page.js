@@ -1,4 +1,3 @@
-/*
 import React from "react"
 import { graphql } from "gatsby"
 import { RichText } from "prismic-reactjs"
@@ -59,48 +58,48 @@ export const query = graphql`
           node {
             title
             text
-            form_uri
-            form_script
-            bg_color
-            bg_image
+            formUri
+            formScript
+            bgColor
+            bgImage
             _meta {
               uid
               type
               lang
             }
             body {
-              ... on PRISMIC_LandingPageBodyPricing_plans {
+              ... on PRISMIC_LandingPageBodyPricingPlans {
                 type
                 label
                 fields {
-                  price_units
-                  plan_price
-                  plan_name
-                  plan_features
-                  link_text
-                  link_style
+                  priceUnits
+                  planPrice
+                  planName
+                  planDetails
+                  linkText
+                  linkStyle
                   link {
                     ...link
                   }
-                  is_free_plan
+                  isFreePlan
                 }
                 primary {
-                  bg_image
-                  bg_color
+                  bgImage
+                  bgColor
                   title
                   text
                 }
               }
-              ... on PRISMIC_LandingPageBodyItems_collection {
+              ... on PRISMIC_LandingPageBodyItemsCollection {
                 label
                 type
                 primary {
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                   text
                   title
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                 }
                 fields {
                   tag
@@ -111,22 +110,22 @@ export const query = graphql`
                 label
                 primary {
                   text
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                 }
               }
               ... on PRISMIC_LandingPageBodyFeature {
                 type
                 label
                 primary {
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                   text
                 }
                 fields {
                   image
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                   text
                   title
                   link {
@@ -134,31 +133,31 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PRISMIC_LandingPageBodyBlock_with_text_and_image {
+              ... on PRISMIC_LandingPageBodyBlockWithTextAndImage {
                 label
                 type
                 primary {
-                  bg_color
-                  bg_image
-                  min_height
+                  bgColor
+                  bgImage
+                  minHeight
                   title
                   text
                   image
                   link {
                     ...link
                   }
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                 }
               }
               ... on PRISMIC_LandingPageBodyForm {
                 type
                 label
                 primary {
-                  bg_color
-                  bg_image
-                  form_script
-                  form_url
+                  bgColor
+                  bgImage
+                  formScript
+                  formUrl
                   text
                 }
               }
@@ -169,4 +168,3 @@ export const query = graphql`
     }
   }
 `
-*/

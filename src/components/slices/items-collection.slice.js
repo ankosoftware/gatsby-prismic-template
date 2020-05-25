@@ -28,7 +28,7 @@ const query = graphql`
               }
             }
             #                        description
-            bg_image
+            bgImage
             text
             title
             #                        preview_image
