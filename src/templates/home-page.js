@@ -7,7 +7,7 @@ import { isDark } from "../utils/styles"
 import { Slices } from "../components/slices.component"
 import { Section } from "../components/common/section.component"
 import { RichText } from "../components/common/rich-text.component"
-import SEO from "../components/common/seo"
+import SEO from "../components/common/seo.component"
 
 const HomePage = ({ data }) => {
   const page = data.prismic.allHomePages.edges[0]
