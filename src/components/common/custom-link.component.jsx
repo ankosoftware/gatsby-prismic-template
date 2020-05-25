@@ -7,19 +7,39 @@ export const CustomLink = ({ children, link, className, activeClassName, style }
   if (link) {
     switch (link._linkType) {
       case "Link.document":
-        if(link._meta) {
-          return <Link to={linkResolver(link._meta)} className={className} partiallyActive={link._meta.uid !== "home-page"}
-                       activeClassName={activeClassName}
-                       style={style}>{children}</Link>
+        if (link._meta) {
+          return (
+            <Link
+              to={linkResolver(link._meta)}
+              className={className}
+              partiallyActive={link._meta.uid !== "home-page"}
+              activeClassName={activeClassName}
+              style={style}
+            >
+              {children}
+            </Link>
+          )
         }
-        return (<a href="#" className={className} style={style}>{children}</a>);
+        return (
+          <span className={className} style={style}>
+            {children}
+          </span>
+        )
       case "Link.web":
-        return <a href={link.url} style={style} className={className}>{children}</a>
+        let { url } = link
+        if (url) {
+          url = url.replace(/^https?:\/\//, "")
+        }
+        return (
+          <a href={url} style={style} className={className}>
+            {children}
+          </a>
+        )
       default:
-        return children || null;
+        return children || null
     }
   }
-  return children || null;
+  return children || null
 }
 
 CustomLink.propTypes = {
@@ -28,7 +48,7 @@ CustomLink.propTypes = {
     url: PropTypes.string,
     _meta: PropTypes.shape({
       uid: PropTypes.string,
-      lang: PropTypes.string
+      lang: PropTypes.string,
     }),
     _linkType: PropTypes.oneOf(["Link.document", "Link.web"]),
   }),

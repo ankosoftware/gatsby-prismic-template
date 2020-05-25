@@ -1,14 +1,37 @@
 import React from "react"
-import {RichText} from "prismic-reactjs"
 import { Section } from "../common/section.component"
+import { RichText } from "../common/rich-text.component"
+
+/**
+ * Text Slice Object
+ * @typedef {
+ * {
+ *  label: string,
+ *  type: string,
+ *  primary: {
+ *    bgColor: string,
+ *    bgImage: *,
+ *    title: string,
+ *    text: string
+ *  }
+ *  }
+ * } TextSlice
+ */
+
+/**
+ *
+ * @param {TextSlice} slice
+ * @return {*}
+ * @constructor
+ */
 
 export const TextSlice = ({ slice }) => {
-  const bgImage = slice.primary && slice.primary.bg_image
-  const bgColor = slice.primary && slice.primary.bg_color
+  const { bgImage, bgColor, text, title } = slice.primary
   return (
     <Section className="py-5" backgroundImage={bgImage} backgroundColor={bgColor}>
       <div>
-        <RichText render={slice.primary.text}/>
+        <RichText render={title} />
+        <RichText render={text} />
       </div>
     </Section>
   )

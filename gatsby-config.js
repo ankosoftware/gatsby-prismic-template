@@ -1,3 +1,5 @@
+const { DEFAULT_LANG, LANGUAGES } = require("./propreties")
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -34,24 +36,43 @@ module.exports = {
         repositoryName: "anko-template",
         path: "/preview",
         previews: true,
+        defaultLang: DEFAULT_LANG,
+        langs: LANGUAGES,
         pages: [
+          /* {
+            type: "BlogCategory",
+            match: "/:lang?/blog/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/blog-category.js"),
+            langs: LANGUAGES,
+          },
           {
             type: "BlogPost",
-            match: "/blog/:uid",
+            match: "/:lang?/blog/:uid",
             path: "/",
             component: require.resolve("./src/templates/blog-post.js"),
+            langs: LANGUAGES,
           },
           {
             type: "LandingPage",
-            match: "/landing/:uid",
+            match: "/:lang?/landing/:uid",
             path: "/",
             component: require.resolve("./src/templates/landing-page.js"),
+            langs: LANGUAGES,
           },
           {
             type: "ContentPage",
-            match: "/:uid",
+            match: "/:lang?/:uid",
             path: "/",
             component: require.resolve("./src/templates/content-page.js"),
+            langs: LANGUAGES,
+          },*/
+          {
+            type: "HomePage",
+            match: "/:lang?/",
+            path: "/",
+            component: require.resolve("./src/templates/home-page.js"),
+            langs: LANGUAGES,
           },
         ],
       },
