@@ -1,4 +1,3 @@
-/*
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout.component"
@@ -65,16 +64,16 @@ export const query = graphql`
           node {
             text
             body {
-              ... on PRISMIC_BlogPageBodyItems_collection {
+              ... on PRISMIC_BlogPageBodyItemsCollection {
                 label
                 type
                 primary {
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                   text
                   title
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                 }
                 fields {
                   tag
@@ -85,22 +84,22 @@ export const query = graphql`
                 label
                 primary {
                   text
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                 }
               }
               ... on PRISMIC_BlogPageBodyFeature {
                 type
                 label
                 primary {
-                  bg_color
-                  bg_image
+                  bgColor
+                  bgImage
                   text
                 }
                 fields {
                   image
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                   text
                   title
                   link {
@@ -108,31 +107,31 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PRISMIC_BlogPageBodyBlock_with_text_and_image {
+              ... on PRISMIC_BlogPageBodyBlockWithTextAndImage {
                 label
                 type
                 primary {
-                  bg_color
-                  bg_image
-                  min_height
+                  bgColor
+                  bgImage
+                  minHeight
                   title
                   text
                   image
                   link {
                     ...link
                   }
-                  link_style
-                  link_text
+                  linkStyle
+                  linkText
                 }
               }
               ... on PRISMIC_BlogPageBodyForm {
                 type
                 label
                 primary {
-                  bg_color
-                  bg_image
-                  form_script
-                  form_url
+                  bgColor
+                  bgImage
+                  formScript
+                  formUrl
                   text
                 }
               }
@@ -155,4 +154,3 @@ export const query = graphql`
     }
   }
 `
-*/

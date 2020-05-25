@@ -24,11 +24,13 @@ interface PRISMIC__Linkable {
 
 union PRISMIC_AsideNavigationBody = PRISMIC_AsideNavigationBodyMenu
 
-union PRISMIC_BlogPageBody = PRISMIC_BlogPageBodyBlock_with_text_and_image | PRISMIC_BlogPageBodyFeature | PRISMIC_BlogPageBodyForm | PRISMIC_BlogPageBodyItems_collection | PRISMIC_BlogPageBodyPricing_plans | PRISMIC_BlogPageBodyText
+union PRISMIC_BlogCategoryBody = PRISMIC_BlogCategoryBodyBlockWithTextAndImage | PRISMIC_BlogCategoryBodyFeature | PRISMIC_BlogCategoryBodyForm | PRISMIC_BlogCategoryBodyItemsCollection | PRISMIC_BlogCategoryBodyPricingPlans | PRISMIC_BlogCategoryBodyText
 
-union PRISMIC_BlogPostBody = PRISMIC_BlogPostBodyBlock_with_text_and_image | PRISMIC_BlogPostBodyFeature | PRISMIC_BlogPostBodyForm | PRISMIC_BlogPostBodyItems_collection | PRISMIC_BlogPostBodyPricing_plans | PRISMIC_BlogPostBodyText
+union PRISMIC_BlogPageBody = PRISMIC_BlogPageBodyBlockWithTextAndImage | PRISMIC_BlogPageBodyFeature | PRISMIC_BlogPageBodyForm | PRISMIC_BlogPageBodyItemsCollection | PRISMIC_BlogPageBodyPricingPlans | PRISMIC_BlogPageBodyText
 
-union PRISMIC_ContentPageBody = PRISMIC_ContentPageBodyBlock_with_text_and_image | PRISMIC_ContentPageBodyFeature | PRISMIC_ContentPageBodyForm | PRISMIC_ContentPageBodyItems_collection | PRISMIC_ContentPageBodyPricing_plans | PRISMIC_ContentPageBodyText
+union PRISMIC_BlogPostBody = PRISMIC_BlogPostBodyBlockWithTextAndImage | PRISMIC_BlogPostBodyFeature | PRISMIC_BlogPostBodyForm | PRISMIC_BlogPostBodyItemsCollection | PRISMIC_BlogPostBodyPricingPlans | PRISMIC_BlogPostBodyText
+
+union PRISMIC_ContentPageBody = PRISMIC_ContentPageBodyBlockWithTextAndImage | PRISMIC_ContentPageBodyFeature | PRISMIC_ContentPageBodyForm | PRISMIC_ContentPageBodyItemsCollection | PRISMIC_ContentPageBodyPricingPlans | PRISMIC_ContentPageBodyText
 
 union PRISMIC_FooterBody = PRISMIC_FooterBodyCustomScript | PRISMIC_FooterBodyMenu
 
@@ -36,7 +38,7 @@ union PRISMIC_HeaderBody = PRISMIC_HeaderBodyCustomScript
 
 union PRISMIC_HomePageBody = PRISMIC_HomePageBodyBlockWithTextAndImage | PRISMIC_HomePageBodyFeature | PRISMIC_HomePageBodyForm | PRISMIC_HomePageBodyItemsCollection | PRISMIC_HomePageBodyPricingPlans | PRISMIC_HomePageBodyText
 
-union PRISMIC_LandingPageBody = PRISMIC_LandingPageBodyBlock_with_text_and_image | PRISMIC_LandingPageBodyFeature | PRISMIC_LandingPageBodyForm | PRISMIC_LandingPageBodyItems_collection | PRISMIC_LandingPageBodyPricing_plans | PRISMIC_LandingPageBodyText
+union PRISMIC_LandingPageBody = PRISMIC_LandingPageBodyBlockWithTextAndImage | PRISMIC_LandingPageBodyFeature | PRISMIC_LandingPageBodyForm | PRISMIC_LandingPageBodyItemsCollection | PRISMIC_LandingPageBodyPricingPlans | PRISMIC_LandingPageBodyText
 
 type Directory implements Node {
   absolutePath: String!
@@ -420,8 +422,8 @@ type ImageSharpFluid {
   base64: String
   originalImg: String
   originalName: String
-  presentationHeight: Int!
-  presentationWidth: Int!
+  presentationHeight: Int
+  presentationWidth: Int
   sizes: String!
   src: String!
   srcSet: String!
@@ -472,8 +474,8 @@ type ImageSharpSizes {
   base64: String
   originalImg: String
   originalName: String
-  presentationHeight: Int!
-  presentationWidth: Int!
+  presentationHeight: Int
+  presentationWidth: Int
   sizes: String!
   src: String!
   srcSet: String!
@@ -560,6 +562,129 @@ type PRISMIC_AsideNavigationConnectionEdge {
 type PRISMIC_BlogCategory implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
+  bgColor: String
+  bgImage: PRISMIC_Json
+  body: [PRISMIC_BlogCategoryBody!]
+  pageDescription: String
+  pageKeywords: [PRISMIC_BlogCategoryPageKeywords!]
+  pagePreviewImage: PRISMIC_Json
+  pageTitle: String
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyBlockWithTextAndImage {
+  label: String
+  primary: PRISMIC_BlogCategoryBodyBlockWithTextAndImagePrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyBlockWithTextAndImagePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  image: PRISMIC_Json
+  imageSharp(crop: String): File
+  link: PRISMIC__Linkable
+  linkStyle: String
+  linkText: String
+  minHeight: Float
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyFeature {
+  fields: [PRISMIC_BlogCategoryBodyFeatureFields!]
+  label: String
+  primary: PRISMIC_BlogCategoryBodyFeaturePrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyFeatureFields {
+  image: PRISMIC_Json
+  imageSharp(crop: String): File
+  link: PRISMIC__Linkable
+  linkStyle: String
+  linkText: String
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyFeaturePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyForm {
+  label: String
+  primary: PRISMIC_BlogCategoryBodyFormPrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyFormPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  formScript: String
+  formUrl: String
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyItemsCollection {
+  fields: [PRISMIC_BlogCategoryBodyItemsCollectionFields!]
+  label: String
+  primary: PRISMIC_BlogCategoryBodyItemsCollectionPrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyItemsCollectionFields {
+  tag: String
+}
+
+type PRISMIC_BlogCategoryBodyItemsCollectionPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  linkStyle: String
+  linkText: String
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyPricingPlans {
+  fields: [PRISMIC_BlogCategoryBodyPricingPlansFields!]
+  label: String
+  primary: PRISMIC_BlogCategoryBodyPricingPlansPrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyPricingPlansFields {
+  isFreePlan: PRISMIC_Json
+  link: PRISMIC__Linkable
+  linkStyle: String
+  linkText: String
+  planDetails: PRISMIC_Json
+  planName: PRISMIC_Json
+  planPrice: String
+  priceUnits: String
+}
+
+type PRISMIC_BlogCategoryBodyPricingPlansPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  text: PRISMIC_Json
+  title: PRISMIC_Json
+}
+
+type PRISMIC_BlogCategoryBodyText {
+  label: String
+  primary: PRISMIC_BlogCategoryBodyTextPrimary
+  type: String
+}
+
+type PRISMIC_BlogCategoryBodyTextPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -581,29 +706,39 @@ type PRISMIC_BlogCategoryConnectionEdge {
   node: PRISMIC_BlogCategory!
 }
 
+type PRISMIC_BlogCategoryPageKeywords {
+  keyword: String
+}
+
 type PRISMIC_BlogPage implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
+  bgColor: String
+  bgImage: PRISMIC_Json
   body: [PRISMIC_BlogPageBody!]
+  pageDescription: String
+  pageKeywords: [PRISMIC_BlogPagePageKeywords!]
+  pagePreviewImage: PRISMIC_Json
+  pageTitle: String
   text: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPageBodyBlock_with_text_and_image {
+type PRISMIC_BlogPageBodyBlockWithTextAndImage {
   label: String
-  primary: PRISMIC_BlogPageBodyBlock_with_text_and_imagePrimary
+  primary: PRISMIC_BlogPageBodyBlockWithTextAndImagePrimary
   type: String
 }
 
-type PRISMIC_BlogPageBodyBlock_with_text_and_imagePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_BlogPageBodyBlockWithTextAndImagePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  min_height: Float
+  linkStyle: String
+  linkText: String
+  minHeight: Float
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -619,18 +754,17 @@ type PRISMIC_BlogPageBodyFeatureFields {
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
 type PRISMIC_BlogPageBodyFeaturePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
-  tiltle: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 type PRISMIC_BlogPageBodyForm {
@@ -640,58 +774,55 @@ type PRISMIC_BlogPageBodyForm {
 }
 
 type PRISMIC_BlogPageBodyFormPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  form_script: String
-  form_url: String
+  bgColor: String
+  bgImage: PRISMIC_Json
+  formScript: String
+  formUrl: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPageBodyItems_collection {
-  fields: [PRISMIC_BlogPageBodyItems_collectionFields!]
+type PRISMIC_BlogPageBodyItemsCollection {
+  fields: [PRISMIC_BlogPageBodyItemsCollectionFields!]
   label: String
-  primary: PRISMIC_BlogPageBodyItems_collectionPrimary
+  primary: PRISMIC_BlogPageBodyItemsCollectionPrimary
   type: String
 }
 
-type PRISMIC_BlogPageBodyItems_collectionFields {
+type PRISMIC_BlogPageBodyItemsCollectionFields {
   tag: String
 }
 
-type PRISMIC_BlogPageBodyItems_collectionPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  link_style: String
-  link_text: String
+type PRISMIC_BlogPageBodyItemsCollectionPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPageBodyPricing_plans {
-  fields: [PRISMIC_BlogPageBodyPricing_plansFields!]
+type PRISMIC_BlogPageBodyPricingPlans {
+  fields: [PRISMIC_BlogPageBodyPricingPlansFields!]
   label: String
-  primary: PRISMIC_BlogPageBodyPricing_plansPrimary
+  primary: PRISMIC_BlogPageBodyPricingPlansPrimary
   type: String
 }
 
-type PRISMIC_BlogPageBodyPricing_plansFields {
-  is_free_plan: PRISMIC_Json
+type PRISMIC_BlogPageBodyPricingPlansFields {
+  isFreePlan: PRISMIC_Json
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  plan_features: PRISMIC_Json
-  plan_name: PRISMIC_Json
-  plan_price: String
-  price_units: String
+  linkStyle: String
+  linkText: String
+  planDetails: PRISMIC_Json
+  planName: PRISMIC_Json
+  planPrice: String
+  priceUnits: String
 }
 
-type PRISMIC_BlogPageBodyPricing_plansPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_BlogPageBodyPricingPlansPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -703,10 +834,10 @@ type PRISMIC_BlogPageBodyText {
 }
 
 type PRISMIC_BlogPageBodyTextPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 "A connection to a list of items."
@@ -726,33 +857,41 @@ type PRISMIC_BlogPageConnectionEdge {
   node: PRISMIC_BlogPage!
 }
 
+type PRISMIC_BlogPagePageKeywords {
+  keyword: String
+}
+
 type PRISMIC_BlogPost implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
+  bgColor: String
   body: [PRISMIC_BlogPostBody!]
   category: PRISMIC__Linkable
   image: PRISMIC_Json
   imageSharp(crop: String): File
-  text_content: PRISMIC_Json
+  pageDescription: String
+  pageKeywords: [PRISMIC_BlogPostPageKeywords!]
+  pagePreviewImage: PRISMIC_Json
+  pageTitle: String
+  text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPostBodyBlock_with_text_and_image {
+type PRISMIC_BlogPostBodyBlockWithTextAndImage {
   label: String
-  primary: PRISMIC_BlogPostBodyBlock_with_text_and_imagePrimary
+  primary: PRISMIC_BlogPostBodyBlockWithTextAndImagePrimary
   type: String
 }
 
-type PRISMIC_BlogPostBodyBlock_with_text_and_imagePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_BlogPostBodyBlockWithTextAndImagePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  min_height: Float
+  linkStyle: String
+  linkText: String
+  minHeight: Float
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -768,18 +907,17 @@ type PRISMIC_BlogPostBodyFeatureFields {
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
 type PRISMIC_BlogPostBodyFeaturePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
-  tiltle: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 type PRISMIC_BlogPostBodyForm {
@@ -789,58 +927,55 @@ type PRISMIC_BlogPostBodyForm {
 }
 
 type PRISMIC_BlogPostBodyFormPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  form_script: String
-  form_url: String
+  bgColor: String
+  bgImage: PRISMIC_Json
+  formScript: String
+  formUrl: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPostBodyItems_collection {
-  fields: [PRISMIC_BlogPostBodyItems_collectionFields!]
+type PRISMIC_BlogPostBodyItemsCollection {
+  fields: [PRISMIC_BlogPostBodyItemsCollectionFields!]
   label: String
-  primary: PRISMIC_BlogPostBodyItems_collectionPrimary
+  primary: PRISMIC_BlogPostBodyItemsCollectionPrimary
   type: String
 }
 
-type PRISMIC_BlogPostBodyItems_collectionFields {
+type PRISMIC_BlogPostBodyItemsCollectionFields {
   tag: String
 }
 
-type PRISMIC_BlogPostBodyItems_collectionPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  link_style: String
-  link_text: String
+type PRISMIC_BlogPostBodyItemsCollectionPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_BlogPostBodyPricing_plans {
-  fields: [PRISMIC_BlogPostBodyPricing_plansFields!]
+type PRISMIC_BlogPostBodyPricingPlans {
+  fields: [PRISMIC_BlogPostBodyPricingPlansFields!]
   label: String
-  primary: PRISMIC_BlogPostBodyPricing_plansPrimary
+  primary: PRISMIC_BlogPostBodyPricingPlansPrimary
   type: String
 }
 
-type PRISMIC_BlogPostBodyPricing_plansFields {
-  is_free_plan: PRISMIC_Json
+type PRISMIC_BlogPostBodyPricingPlansFields {
+  isFreePlan: PRISMIC_Json
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  plan_features: PRISMIC_Json
-  plan_name: PRISMIC_Json
-  plan_price: String
-  price_units: String
+  linkStyle: String
+  linkText: String
+  planDetails: PRISMIC_Json
+  planName: PRISMIC_Json
+  planPrice: String
+  priceUnits: String
 }
 
-type PRISMIC_BlogPostBodyPricing_plansPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_BlogPostBodyPricingPlansPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -852,10 +987,10 @@ type PRISMIC_BlogPostBodyText {
 }
 
 type PRISMIC_BlogPostBodyTextPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 "A connection to a list of items."
@@ -875,35 +1010,41 @@ type PRISMIC_BlogPostConnectionEdge {
   node: PRISMIC_BlogPost!
 }
 
+type PRISMIC_BlogPostPageKeywords {
+  keyword: String
+}
+
 type PRISMIC_ContentPage implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
   aside_navigation: PRISMIC__Linkable
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   body: [PRISMIC_ContentPageBody!]
+  pageDescription: String
+  pageKeywords: [PRISMIC_ContentPagePageKeywords!]
+  pagePreviewImage: PRISMIC_Json
+  pageTitle: String
   parent: PRISMIC__Linkable
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_ContentPageBodyBlock_with_text_and_image {
+type PRISMIC_ContentPageBodyBlockWithTextAndImage {
   label: String
-  primary: PRISMIC_ContentPageBodyBlock_with_text_and_imagePrimary
+  primary: PRISMIC_ContentPageBodyBlockWithTextAndImagePrimary
   type: String
 }
 
-type PRISMIC_ContentPageBodyBlock_with_text_and_imagePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_ContentPageBodyBlockWithTextAndImagePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  min_height: Float
+  linkStyle: String
+  linkText: String
+  minHeight: Float
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -919,16 +1060,15 @@ type PRISMIC_ContentPageBodyFeatureFields {
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
 type PRISMIC_ContentPageBodyFeaturePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -940,58 +1080,55 @@ type PRISMIC_ContentPageBodyForm {
 }
 
 type PRISMIC_ContentPageBodyFormPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  form_script: String
-  form_url: String
+  bgColor: String
+  bgImage: PRISMIC_Json
+  formScript: String
+  formUrl: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_ContentPageBodyItems_collection {
-  fields: [PRISMIC_ContentPageBodyItems_collectionFields!]
+type PRISMIC_ContentPageBodyItemsCollection {
+  fields: [PRISMIC_ContentPageBodyItemsCollectionFields!]
   label: String
-  primary: PRISMIC_ContentPageBodyItems_collectionPrimary
+  primary: PRISMIC_ContentPageBodyItemsCollectionPrimary
   type: String
 }
 
-type PRISMIC_ContentPageBodyItems_collectionFields {
+type PRISMIC_ContentPageBodyItemsCollectionFields {
   tag: String
 }
 
-type PRISMIC_ContentPageBodyItems_collectionPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  link_style: String
-  link_text: String
+type PRISMIC_ContentPageBodyItemsCollectionPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_ContentPageBodyPricing_plans {
-  fields: [PRISMIC_ContentPageBodyPricing_plansFields!]
+type PRISMIC_ContentPageBodyPricingPlans {
+  fields: [PRISMIC_ContentPageBodyPricingPlansFields!]
   label: String
-  primary: PRISMIC_ContentPageBodyPricing_plansPrimary
+  primary: PRISMIC_ContentPageBodyPricingPlansPrimary
   type: String
 }
 
-type PRISMIC_ContentPageBodyPricing_plansFields {
-  is_free_plan: PRISMIC_Json
+type PRISMIC_ContentPageBodyPricingPlansFields {
+  isFreePlan: PRISMIC_Json
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  plan_features: PRISMIC_Json
-  plan_name: PRISMIC_Json
-  plan_price: String
-  price_units: String
+  linkStyle: String
+  linkText: String
+  planDetails: PRISMIC_Json
+  planName: PRISMIC_Json
+  planPrice: String
+  priceUnits: String
 }
 
-type PRISMIC_ContentPageBodyPricing_plansPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_ContentPageBodyPricingPlansPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -1003,10 +1140,10 @@ type PRISMIC_ContentPageBodyText {
 }
 
 type PRISMIC_ContentPageBodyTextPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 "A connection to a list of items."
@@ -1024,6 +1161,10 @@ type PRISMIC_ContentPageConnectionEdge {
   cursor: String!
   "The item at the end of the edge."
   node: PRISMIC_ContentPage!
+}
+
+type PRISMIC_ContentPagePageKeywords {
+  keyword: String
 }
 
 type PRISMIC_Footer implements PRISMIC__Document & PRISMIC__Linkable {
@@ -1289,32 +1430,34 @@ type PRISMIC_HomePagePageKeywords {
 type PRISMIC_LandingPage implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   body: [PRISMIC_LandingPageBody!]
-  form_script: String
-  form_uri: String
+  formScript: String
+  formUri: String
+  pageDescription: String
+  pageKeywords: [PRISMIC_LandingPagePageKeywords!]
+  pagePreviewImage: PRISMIC_Json
+  pageTitle: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_LandingPageBodyBlock_with_text_and_image {
+type PRISMIC_LandingPageBodyBlockWithTextAndImage {
   label: String
-  primary: PRISMIC_LandingPageBodyBlock_with_text_and_imagePrimary
+  primary: PRISMIC_LandingPageBodyBlockWithTextAndImagePrimary
   type: String
 }
 
-type PRISMIC_LandingPageBodyBlock_with_text_and_imagePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_LandingPageBodyBlockWithTextAndImagePrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  min_height: Float
+  linkStyle: String
+  linkText: String
+  minHeight: Float
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -1330,18 +1473,17 @@ type PRISMIC_LandingPageBodyFeatureFields {
   image: PRISMIC_Json
   imageSharp(crop: String): File
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
 type PRISMIC_LandingPageBodyFeaturePrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
-  tiltle: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 type PRISMIC_LandingPageBodyForm {
@@ -1351,58 +1493,55 @@ type PRISMIC_LandingPageBodyForm {
 }
 
 type PRISMIC_LandingPageBodyFormPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  form_script: String
-  form_url: String
+  bgColor: String
+  bgImage: PRISMIC_Json
+  formScript: String
+  formUrl: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_LandingPageBodyItems_collection {
-  fields: [PRISMIC_LandingPageBodyItems_collectionFields!]
+type PRISMIC_LandingPageBodyItemsCollection {
+  fields: [PRISMIC_LandingPageBodyItemsCollectionFields!]
   label: String
-  primary: PRISMIC_LandingPageBodyItems_collectionPrimary
+  primary: PRISMIC_LandingPageBodyItemsCollectionPrimary
   type: String
 }
 
-type PRISMIC_LandingPageBodyItems_collectionFields {
+type PRISMIC_LandingPageBodyItemsCollectionFields {
   tag: String
 }
 
-type PRISMIC_LandingPageBodyItems_collectionPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
-  link_style: String
-  link_text: String
+type PRISMIC_LandingPageBodyItemsCollectionPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
+  linkStyle: String
+  linkText: String
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
 
-type PRISMIC_LandingPageBodyPricing_plans {
-  fields: [PRISMIC_LandingPageBodyPricing_plansFields!]
+type PRISMIC_LandingPageBodyPricingPlans {
+  fields: [PRISMIC_LandingPageBodyPricingPlansFields!]
   label: String
-  primary: PRISMIC_LandingPageBodyPricing_plansPrimary
+  primary: PRISMIC_LandingPageBodyPricingPlansPrimary
   type: String
 }
 
-type PRISMIC_LandingPageBodyPricing_plansFields {
-  is_free_plan: PRISMIC_Json
+type PRISMIC_LandingPageBodyPricingPlansFields {
+  isFreePlan: PRISMIC_Json
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
-  plan_features: PRISMIC_Json
-  plan_name: PRISMIC_Json
-  plan_price: String
-  price_units: String
+  linkStyle: String
+  linkText: String
+  planDetails: PRISMIC_Json
+  planName: PRISMIC_Json
+  planPrice: String
+  priceUnits: String
 }
 
-type PRISMIC_LandingPageBodyPricing_plansPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+type PRISMIC_LandingPageBodyPricingPlansPrimary {
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
   title: PRISMIC_Json
 }
@@ -1414,10 +1553,10 @@ type PRISMIC_LandingPageBodyText {
 }
 
 type PRISMIC_LandingPageBodyTextPrimary {
-  bg_color: String
-  bg_image: PRISMIC_Json
-  bg_imageSharp(crop: String): File
+  bgColor: String
+  bgImage: PRISMIC_Json
   text: PRISMIC_Json
+  title: PRISMIC_Json
 }
 
 "A connection to a list of items."
@@ -1435,6 +1574,10 @@ type PRISMIC_LandingPageConnectionEdge {
   cursor: String!
   "The item at the end of the edge."
   node: PRISMIC_LandingPage!
+}
+
+type PRISMIC_LandingPagePageKeywords {
+  keyword: String
 }
 
 type PRISMIC_Meta {
@@ -1527,7 +1670,6 @@ type PageInfo {
   itemCount: Int!
   pageCount: Int!
   perPage: Int
-  totalCount: Int!
 }
 
 type Query {
@@ -1544,7 +1686,7 @@ type Query {
   graphQlSource(children: NodeFilterListInput, fieldName: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, typeName: StringQueryOperatorInput): GraphQLSource
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput, resolutions: ImageSharpResolutionsFilterInput, sizes: ImageSharpSizesFilterInput): ImageSharp
   prismic: PRISMIC!
-  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
   siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
   sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
   sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
@@ -1568,16 +1710,7 @@ type Site implements Node {
   parent: Node
   pathPrefix: String
   polyfill: Boolean
-  port(
-    "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
-    difference: String,
-    "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
-    formatString: String,
-    "Returns a string generated with Moment.js' `fromNow` function"
-    fromNow: Boolean,
-    "Configures the locale Moment.js will use to format the date."
-    locale: String
-  ): Date
+  port: Int
   siteMetadata: SiteSiteMetadata
 }
 
@@ -1769,14 +1902,10 @@ type SitePluginPackageJsonPeerDependencies {
 
 type SitePluginPluginOptions {
   background_color: String
-  cacheDigest: String
-  cache_busting_mode: String
   defaultLang: String
   display: String
   icon: String
-  include_favicon: Boolean
   langs: [String]
-  legacy: Boolean
   name: String
   pages: [SitePluginPluginOptionsPages]
   path: String
@@ -1786,7 +1915,6 @@ type SitePluginPluginOptions {
   short_name: String
   start_url: String
   theme_color: String
-  theme_color_in_head: Boolean
 }
 
 type SitePluginPluginOptionsPages {
@@ -2415,6 +2543,10 @@ enum PRISMIC_SortBlogCategoryy {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+  pageDescription_ASC
+  pageDescription_DESC
+  pageTitle_ASC
+  pageTitle_DESC
   text_ASC
   text_DESC
   title_ASC
@@ -2426,8 +2558,14 @@ enum PRISMIC_SortBlogPagey {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+  pageDescription_ASC
+  pageDescription_DESC
+  pageTitle_ASC
+  pageTitle_DESC
   text_ASC
   text_DESC
+  title_ASC
+  title_DESC
 }
 
 enum PRISMIC_SortBlogPosty {
@@ -2435,8 +2573,12 @@ enum PRISMIC_SortBlogPosty {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
-  text_content_ASC
-  text_content_DESC
+  pageDescription_ASC
+  pageDescription_DESC
+  pageTitle_ASC
+  pageTitle_DESC
+  text_ASC
+  text_DESC
   title_ASC
   title_DESC
 }
@@ -2446,6 +2588,10 @@ enum PRISMIC_SortContentPagey {
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+  pageDescription_ASC
+  pageDescription_DESC
+  pageTitle_ASC
+  pageTitle_DESC
   text_ASC
   text_DESC
   title_ASC
@@ -2493,14 +2639,18 @@ enum PRISMIC_SortHomePagey {
 }
 
 enum PRISMIC_SortLandingPagey {
-  form_script_ASC
-  form_script_DESC
-  form_uri_ASC
-  form_uri_DESC
+  formScript_ASC
+  formScript_DESC
+  formUri_ASC
+  formUri_DESC
   meta_firstPublicationDate_ASC
   meta_firstPublicationDate_DESC
   meta_lastPublicationDate_ASC
   meta_lastPublicationDate_DESC
+  pageDescription_ASC
+  pageDescription_DESC
+  pageTitle_ASC
+  pageTitle_DESC
   text_ASC
   text_DESC
   title_ASC
@@ -2866,14 +3016,10 @@ enum SitePageFieldsEnum {
   pluginCreator___parent___parent___id
   pluginCreator___pluginFilepath
   pluginCreator___pluginOptions___background_color
-  pluginCreator___pluginOptions___cacheDigest
-  pluginCreator___pluginOptions___cache_busting_mode
   pluginCreator___pluginOptions___defaultLang
   pluginCreator___pluginOptions___display
   pluginCreator___pluginOptions___icon
-  pluginCreator___pluginOptions___include_favicon
   pluginCreator___pluginOptions___langs
-  pluginCreator___pluginOptions___legacy
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___pages
   pluginCreator___pluginOptions___pages___component
@@ -2888,7 +3034,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___short_name
   pluginCreator___pluginOptions___start_url
   pluginCreator___pluginOptions___theme_color
-  pluginCreator___pluginOptions___theme_color_in_head
   pluginCreator___resolve
   pluginCreator___ssrAPIs
   pluginCreator___version
@@ -3001,14 +3146,10 @@ enum SitePluginFieldsEnum {
   parent___parent___parent___id
   pluginFilepath
   pluginOptions___background_color
-  pluginOptions___cacheDigest
-  pluginOptions___cache_busting_mode
   pluginOptions___defaultLang
   pluginOptions___display
   pluginOptions___icon
-  pluginOptions___include_favicon
   pluginOptions___langs
-  pluginOptions___legacy
   pluginOptions___name
   pluginOptions___pages
   pluginOptions___pages___component
@@ -3023,7 +3164,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___short_name
   pluginOptions___start_url
   pluginOptions___theme_color
-  pluginOptions___theme_color_in_head
   resolve
   ssrAPIs
   version
@@ -3303,6 +3443,10 @@ input PRISMIC_WhereAsideNavigation {
 }
 
 input PRISMIC_WhereBlogCategory {
+  pageDescription: String
+  pageDescription_fulltext: String
+  pageTitle: String
+  pageTitle_fulltext: String
   "text"
   text_fulltext: String
   "title"
@@ -3310,15 +3454,25 @@ input PRISMIC_WhereBlogCategory {
 }
 
 input PRISMIC_WhereBlogPage {
+  pageDescription: String
+  pageDescription_fulltext: String
+  pageTitle: String
+  pageTitle_fulltext: String
   "text"
   text_fulltext: String
+  "title"
+  title_fulltext: String
 }
 
 input PRISMIC_WhereBlogPost {
   "category"
   category: String
-  "text_content"
-  text_content_fulltext: String
+  pageDescription: String
+  pageDescription_fulltext: String
+  pageTitle: String
+  pageTitle_fulltext: String
+  "text"
+  text_fulltext: String
   "title"
   title_fulltext: String
 }
@@ -3326,6 +3480,10 @@ input PRISMIC_WhereBlogPost {
 input PRISMIC_WhereContentPage {
   "aside_navigation"
   aside_navigation: String
+  pageDescription: String
+  pageDescription_fulltext: String
+  pageTitle: String
+  pageTitle_fulltext: String
   "parent"
   parent: String
   "text"
@@ -3353,10 +3511,14 @@ input PRISMIC_WhereHomePage {
 }
 
 input PRISMIC_WhereLandingPage {
-  form_script: String
-  form_script_fulltext: String
-  form_uri: String
-  form_uri_fulltext: String
+  formScript: String
+  formScript_fulltext: String
+  formUri: String
+  formUri_fulltext: String
+  pageDescription: String
+  pageDescription_fulltext: String
+  pageTitle: String
+  pageTitle_fulltext: String
   "text"
   text_fulltext: String
   "title"
@@ -3402,7 +3564,7 @@ input SiteFilterInput {
   parent: NodeFilterInput
   pathPrefix: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
-  port: DateQueryOperatorInput
+  port: IntQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
@@ -3498,14 +3660,10 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 
 input SitePluginPluginOptionsFilterInput {
   background_color: StringQueryOperatorInput
-  cacheDigest: StringQueryOperatorInput
-  cache_busting_mode: StringQueryOperatorInput
   defaultLang: StringQueryOperatorInput
   display: StringQueryOperatorInput
   icon: StringQueryOperatorInput
-  include_favicon: BooleanQueryOperatorInput
   langs: StringQueryOperatorInput
-  legacy: BooleanQueryOperatorInput
   name: StringQueryOperatorInput
   pages: SitePluginPluginOptionsPagesFilterListInput
   path: StringQueryOperatorInput
@@ -3515,7 +3673,6 @@ input SitePluginPluginOptionsFilterInput {
   short_name: StringQueryOperatorInput
   start_url: StringQueryOperatorInput
   theme_color: StringQueryOperatorInput
-  theme_color_in_head: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPagesFilterInput {
