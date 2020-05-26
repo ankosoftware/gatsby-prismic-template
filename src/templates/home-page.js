@@ -7,7 +7,7 @@ import { isDark } from "../utils/styles"
 import { Slices } from "../components/slices.component"
 import { Section } from "../components/common/section.component"
 import { RichText } from "../components/common/rich-text.component"
-import SEO from "../components/common/seo"
+import SEO from "../components/common/seo.component"
 
 const HomePage = ({ data }) => {
   const page = data.prismic.allHomePages.edges[0]
@@ -27,7 +27,13 @@ const HomePage = ({ data }) => {
     const dark = isDark(bgColor, bgImage)
     return (
       <LayoutComponent>
-        <SEO title={pageTitle || title} description={pageDescription || text} lang={_meta.lang} />
+        <SEO
+          title={pageTitle || title}
+          description={pageDescription || text}
+          keywords={pageKeywords}
+          image={pagePreviewImage}
+          lang={_meta.lang}
+        />
         <Section backgroundImage={bgImage} backgroundColor={bgColor}>
           <Header theme={dark ? "dark" : "light"} />
           <div className="mt-10 text-center">

@@ -12,12 +12,24 @@ import { convertRichTextToPlain } from "../../utils/text"
 import { getHTMLLang } from "../../utils/langs"
 import { DEFAULT_LANG } from "../../../propreties"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta = [], title, keywords, image }) {
   if (typeof title === "object") {
     title = convertRichTextToPlain(title)
   }
   if (typeof description === "object") {
     description = convertRichTextToPlain(description)
+  }
+  if (keywords && keywords.length) {
+    meta.push({
+      name: "Keywords",
+      content: keywords.map(item => item.keyword).join(", "),
+    })
+  }
+  if (image && image.url) {
+    meta.push({
+      name: "Image",
+      content: image.url,
+    })
   }
   lang = lang ? getHTMLLang(lang) : getHTMLLang(DEFAULT_LANG)
   return (

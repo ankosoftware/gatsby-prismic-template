@@ -1,6 +1,8 @@
 //@import "variables";
 @import "variables-trt";
 @import "~bootstrap/scss/bootstrap";
+@import "~prismjs/themes/prism.css";
+@import "~prismjs/themes/prism-funky.css";
 @import "utils";
 @import "navbar.component";
 @import "pricing.slice";
