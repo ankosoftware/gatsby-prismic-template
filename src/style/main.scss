@@ -1,5 +1,5 @@
-//@import "variables";
-@import "variables-trt";
+@import "variables";
+//@import "variables-trt";
 @import "~bootstrap/scss/bootstrap";
 @import "~prismjs/themes/prism.css";
 @import "~prismjs/themes/prism-funky.css";
@@ -11,4 +11,5 @@
 @import "features.slice";
 @import "blog-with-image.slice";
 @import "footer";
-
+@import "card.blog.component";
+@import "blog";

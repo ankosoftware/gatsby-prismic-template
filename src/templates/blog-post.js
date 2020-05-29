@@ -56,6 +56,7 @@ export const query = graphql`
             title
             text
             image
+            isFeaturedArticle
             body {
               ... on PRISMIC_BlogPostBodyPricingPlans {
                 type

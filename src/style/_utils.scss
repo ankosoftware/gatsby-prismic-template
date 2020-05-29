@@ -1,3 +1,23 @@
 .mt-10 {
   margin-top: 10rem;
 }
+
+.mt-8 {
+  margin-top: 8rem;
+}
+
+.mt-md-8 {
+  @include media-breakpoint-down(md) {
+    margin-top: 8rem;
+  }
+}
+
+.mt-6 {
+  margin-top: 6rem;
+}
+
+.mt-sm-6 {
+  @include media-breakpoint-down(xs) {
+    margin-top: 6rem;
+  }
+}
