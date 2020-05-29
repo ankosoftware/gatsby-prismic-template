@@ -422,8 +422,8 @@ type ImageSharpFluid {
   base64: String
   originalImg: String
   originalName: String
-  presentationHeight: Int
-  presentationWidth: Int
+  presentationHeight: Int!
+  presentationWidth: Int!
   sizes: String!
   src: String!
   srcSet: String!
@@ -474,8 +474,8 @@ type ImageSharpSizes {
   base64: String
   originalImg: String
   originalName: String
-  presentationHeight: Int
-  presentationWidth: Int
+  presentationHeight: Int!
+  presentationWidth: Int!
   sizes: String!
   src: String!
   srcSet: String!
@@ -869,6 +869,7 @@ type PRISMIC_BlogPost implements PRISMIC__Document & PRISMIC__Linkable {
   category: PRISMIC__Linkable
   image: PRISMIC_Json
   imageSharp(crop: String): File
+  isFeaturedArticle: PRISMIC_Json
   pageDescription: String
   pageKeywords: [PRISMIC_BlogPostPageKeywords!]
   pagePreviewImage: PRISMIC_Json
@@ -1670,6 +1671,7 @@ type PageInfo {
   itemCount: Int!
   pageCount: Int!
   perPage: Int
+  totalCount: Int!
 }
 
 type Query {
@@ -1686,7 +1688,7 @@ type Query {
   graphQlSource(children: NodeFilterListInput, fieldName: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, typeName: StringQueryOperatorInput): GraphQLSource
   imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput, resolutions: ImageSharpResolutionsFilterInput, sizes: ImageSharpSizesFilterInput): ImageSharp
   prismic: PRISMIC!
-  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: IntQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, host: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, pathPrefix: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, port: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput): Site
   siteBuildMetadata(buildTime: DateQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput): SiteBuildMetadata
   sitePage(children: NodeFilterListInput, component: StringQueryOperatorInput, componentChunkName: StringQueryOperatorInput, componentPath: StringQueryOperatorInput, context: SitePageContextFilterInput, id: StringQueryOperatorInput, internal: InternalFilterInput, internalComponentName: StringQueryOperatorInput, isCreatedByStatefulCreatePages: BooleanQueryOperatorInput, matchPath: StringQueryOperatorInput, parent: NodeFilterInput, path: StringQueryOperatorInput, pluginCreator: SitePluginFilterInput, pluginCreatorId: StringQueryOperatorInput): SitePage
   sitePlugin(browserAPIs: StringQueryOperatorInput, children: NodeFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, nodeAPIs: StringQueryOperatorInput, packageJson: SitePluginPackageJsonFilterInput, parent: NodeFilterInput, pluginFilepath: StringQueryOperatorInput, pluginOptions: SitePluginPluginOptionsFilterInput, resolve: StringQueryOperatorInput, ssrAPIs: StringQueryOperatorInput, version: StringQueryOperatorInput): SitePlugin
@@ -1710,7 +1712,16 @@ type Site implements Node {
   parent: Node
   pathPrefix: String
   polyfill: Boolean
-  port: Int
+  port(
+    "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+    difference: String,
+    "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+    formatString: String,
+    "Returns a string generated with Moment.js' `fromNow` function"
+    fromNow: Boolean,
+    "Configures the locale Moment.js will use to format the date."
+    locale: String
+  ): Date
   siteMetadata: SiteSiteMetadata
 }
 
@@ -1806,15 +1817,58 @@ type SitePageConnection {
 }
 
 type SitePageContext {
+  currentPage: Int
   id: String
   lang: String
+  limit: Int
+  numPages: Int
   paginationNextLang: String
   paginationNextUid: String
   paginationPreviousLang: String
   paginationPreviousUid: String
+  posts: [SitePageContextPosts]
   prismicAllPagePaths: [String]
   prismicPreviewPage: Boolean
   rootQuery: String
+  skip: Int
+  uid: String
+}
+
+type SitePageContextPosts {
+  node: SitePageContextPostsNode
+}
+
+type SitePageContextPostsNode {
+  _meta: SitePageContextPostsNode_meta
+  _xtypename: String
+  category: SitePageContextPostsNodeCategory
+  title: [SitePageContextPostsNodeTitle]
+}
+
+type SitePageContextPostsNodeCategory {
+  _meta: SitePageContextPostsNodeCategory_meta
+  title: [SitePageContextPostsNodeCategoryTitle]
+}
+
+type SitePageContextPostsNodeCategoryTitle {
+  text: String
+  type: String
+}
+
+type SitePageContextPostsNodeCategory_meta {
+  lang: String
+  type: String
+  uid: String
+}
+
+type SitePageContextPostsNodeTitle {
+  text: String
+  type: String
+}
+
+type SitePageContextPostsNode_meta {
+  lang: String
+  type: String
   uid: String
 }
 
@@ -1902,10 +1956,14 @@ type SitePluginPackageJsonPeerDependencies {
 
 type SitePluginPluginOptions {
   background_color: String
+  cacheDigest: String
+  cache_busting_mode: String
   defaultLang: String
   display: String
   icon: String
+  include_favicon: Boolean
   langs: [String]
+  legacy: Boolean
   name: String
   pages: [SitePluginPluginOptionsPages]
   path: String
@@ -1915,6 +1973,7 @@ type SitePluginPluginOptions {
   short_name: String
   start_url: String
   theme_color: String
+  theme_color_in_head: Boolean
 }
 
 type SitePluginPluginOptionsPages {
@@ -2896,15 +2955,22 @@ enum SitePageFieldsEnum {
   component
   componentChunkName
   componentPath
+  context___currentPage
   context___id
   context___lang
+  context___limit
+  context___numPages
   context___paginationNextLang
   context___paginationNextUid
   context___paginationPreviousLang
   context___paginationPreviousUid
+  context___posts
+  context___posts___node____xtypename
+  context___posts___node___title
   context___prismicAllPagePaths
   context___prismicPreviewPage
   context___rootQuery
+  context___skip
   context___uid
   id
   internalComponentName
@@ -3016,10 +3082,14 @@ enum SitePageFieldsEnum {
   pluginCreator___parent___parent___id
   pluginCreator___pluginFilepath
   pluginCreator___pluginOptions___background_color
+  pluginCreator___pluginOptions___cacheDigest
+  pluginCreator___pluginOptions___cache_busting_mode
   pluginCreator___pluginOptions___defaultLang
   pluginCreator___pluginOptions___display
   pluginCreator___pluginOptions___icon
+  pluginCreator___pluginOptions___include_favicon
   pluginCreator___pluginOptions___langs
+  pluginCreator___pluginOptions___legacy
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___pages
   pluginCreator___pluginOptions___pages___component
@@ -3034,6 +3104,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___short_name
   pluginCreator___pluginOptions___start_url
   pluginCreator___pluginOptions___theme_color
+  pluginCreator___pluginOptions___theme_color_in_head
   pluginCreator___resolve
   pluginCreator___ssrAPIs
   pluginCreator___version
@@ -3146,10 +3217,14 @@ enum SitePluginFieldsEnum {
   parent___parent___parent___id
   pluginFilepath
   pluginOptions___background_color
+  pluginOptions___cacheDigest
+  pluginOptions___cache_busting_mode
   pluginOptions___defaultLang
   pluginOptions___display
   pluginOptions___icon
+  pluginOptions___include_favicon
   pluginOptions___langs
+  pluginOptions___legacy
   pluginOptions___name
   pluginOptions___pages
   pluginOptions___pages___component
@@ -3164,6 +3239,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___short_name
   pluginOptions___start_url
   pluginOptions___theme_color
+  pluginOptions___theme_color_in_head
   resolve
   ssrAPIs
   version
@@ -3467,6 +3543,7 @@ input PRISMIC_WhereBlogPage {
 input PRISMIC_WhereBlogPost {
   "category"
   category: String
+  isFeaturedArticle: Boolean
   pageDescription: String
   pageDescription_fulltext: String
   pageTitle: String
@@ -3564,20 +3641,75 @@ input SiteFilterInput {
   parent: NodeFilterInput
   pathPrefix: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
-  port: IntQueryOperatorInput
+  port: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
 input SitePageContextFilterInput {
+  currentPage: IntQueryOperatorInput
   id: StringQueryOperatorInput
   lang: StringQueryOperatorInput
+  limit: IntQueryOperatorInput
+  numPages: IntQueryOperatorInput
   paginationNextLang: StringQueryOperatorInput
   paginationNextUid: StringQueryOperatorInput
   paginationPreviousLang: StringQueryOperatorInput
   paginationPreviousUid: StringQueryOperatorInput
+  posts: SitePageContextPostsFilterListInput
   prismicAllPagePaths: StringQueryOperatorInput
   prismicPreviewPage: BooleanQueryOperatorInput
   rootQuery: StringQueryOperatorInput
+  skip: IntQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
+input SitePageContextPostsFilterInput {
+  node: SitePageContextPostsNodeFilterInput
+}
+
+input SitePageContextPostsFilterListInput {
+  elemMatch: SitePageContextPostsFilterInput
+}
+
+input SitePageContextPostsNodeCategoryFilterInput {
+  _meta: SitePageContextPostsNodeCategory_metaFilterInput
+  title: SitePageContextPostsNodeCategoryTitleFilterListInput
+}
+
+input SitePageContextPostsNodeCategoryTitleFilterInput {
+  text: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+}
+
+input SitePageContextPostsNodeCategoryTitleFilterListInput {
+  elemMatch: SitePageContextPostsNodeCategoryTitleFilterInput
+}
+
+input SitePageContextPostsNodeCategory_metaFilterInput {
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
+input SitePageContextPostsNodeFilterInput {
+  _meta: SitePageContextPostsNode_metaFilterInput
+  _xtypename: StringQueryOperatorInput
+  category: SitePageContextPostsNodeCategoryFilterInput
+  title: SitePageContextPostsNodeTitleFilterListInput
+}
+
+input SitePageContextPostsNodeTitleFilterInput {
+  text: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+}
+
+input SitePageContextPostsNodeTitleFilterListInput {
+  elemMatch: SitePageContextPostsNodeTitleFilterInput
+}
+
+input SitePageContextPostsNode_metaFilterInput {
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
   uid: StringQueryOperatorInput
 }
 
@@ -3660,10 +3792,14 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 
 input SitePluginPluginOptionsFilterInput {
   background_color: StringQueryOperatorInput
+  cacheDigest: StringQueryOperatorInput
+  cache_busting_mode: StringQueryOperatorInput
   defaultLang: StringQueryOperatorInput
   display: StringQueryOperatorInput
   icon: StringQueryOperatorInput
+  include_favicon: BooleanQueryOperatorInput
   langs: StringQueryOperatorInput
+  legacy: BooleanQueryOperatorInput
   name: StringQueryOperatorInput
   pages: SitePluginPluginOptionsPagesFilterListInput
   path: StringQueryOperatorInput
@@ -3673,6 +3809,7 @@ input SitePluginPluginOptionsFilterInput {
   short_name: StringQueryOperatorInput
   start_url: StringQueryOperatorInput
   theme_color: StringQueryOperatorInput
+  theme_color_in_head: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsPagesFilterInput {
