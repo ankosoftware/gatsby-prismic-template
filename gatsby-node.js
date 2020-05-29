@@ -3,6 +3,8 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const { POSTS_PER_PAGE } = require("./propreties")
+
 const { getLangPrefix } = require("./src/utils/langs")
 
 // You can delete this file if you're not using it
@@ -40,6 +42,104 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         lang: node._meta.lang,
         uid: node._meta.uid,
       },
+    })
+  })
+
+  const blogCategory = path.resolve("src/templates/blog-category.js")
+  const blogCategoryQuery = await graphql(`
+    {
+      prismic {
+        allBlogCategorys {
+          edges {
+            node {
+              _meta {
+                uid
+                type
+                lang
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (blogCategoryQuery.errors) {
+    return reporter.panicOnBuild("Error while running GraphQL query")
+  }
+  const blogPostQuery = await graphql(`
+    {
+      prismic {
+        allBlogPosts(sortBy: meta_firstPublicationDate_DESC) {
+          edges {
+            node {
+              __typename
+              _meta {
+                uid
+                type
+                lang
+              }
+              category {
+                ... on PRISMIC_BlogCategory {
+                  title
+                  _meta {
+                    uid
+                    type
+                    lang
+                  }
+                }
+              }
+              image
+              title
+              pageTitle
+              pageDescription
+              pagePreviewImage
+              isFeaturedArticle
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (blogPostQuery.errors) {
+    return reporter.panicOnBuild("Error while running GraphQL query")
+  }
+  blogCategoryQuery.data.prismic.allBlogCategorys.edges.forEach(({ node }) => {
+    const category = node
+    const posts = blogPostQuery.data.prismic.allBlogPosts.edges.filter(({ node }) => {
+      return (
+        node.category &&
+        node.category._meta.uid === category._meta.uid &&
+        node.category._meta.lang === category._meta.lang &&
+        !node.isFeaturedArticle
+      )
+    })
+    const featured = blogPostQuery.data.prismic.allBlogPosts.edges.filter(({ node }) => {
+      return (
+        node.category &&
+        node.category._meta.uid === category._meta.uid &&
+        node.category._meta.lang === category._meta.lang &&
+        node.isFeaturedArticle
+      )
+    })
+    const numPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+    Array.from({ length: numPages }).forEach((_, index) => {
+      createPage({
+        path:
+          index === 0
+            ? `${getLangPrefix(category._meta.lang)}/blog/${category._meta.uid}`
+            : `/blog/${category._meta.uid}/${index + 1}`,
+        component: blogCategory,
+        context: {
+          uid: node._meta.uid,
+          lang: node._meta.lang,
+          posts: posts.slice(index * POSTS_PER_PAGE, index * POSTS_PER_PAGE + POSTS_PER_PAGE),
+          featured,
+          limit: POSTS_PER_PAGE,
+          skip: index * POSTS_PER_PAGE,
+          numPages,
+          currentPage: index,
+        },
+      })
     })
   })
 }

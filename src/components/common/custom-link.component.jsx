@@ -28,7 +28,7 @@ export const CustomLink = ({ children, link, className, activeClassName, style }
       case "Link.web":
         let { url } = link
         if (url) {
-          url = url.replace(/^https?:\/\//, "")
+          url = url.replace(/^https?:\/\/#/, "#")
         }
         return (
           <a href={url} style={style} className={className}>
