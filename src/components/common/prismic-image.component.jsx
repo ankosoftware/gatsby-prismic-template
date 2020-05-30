@@ -1,13 +1,9 @@
-import React from 'react';
-import Img from 'gatsby-image';
+import React from "react"
+import Img from "gatsby-image"
 
-export const PrismicImage = ({image, className}) => {
-    if(image && image.childImageSharp) {
-        return (
-            <Img alt={image.alt} fluid={image.childImageSharp.fluid} className={className} />
-        )
-    }
-    return null;
-};
-
-
+export const PrismicImage = ({ image, className, style }) => {
+  if (image && image.childImageSharp) {
+    return <Img alt={image.alt} fluid={image.childImageSharp.fluid} style={style} className={className} />
+  }
+  return null
+}

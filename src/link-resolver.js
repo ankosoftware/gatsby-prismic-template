@@ -8,7 +8,12 @@ export const linkResolver = (doc, parent) => {
       return `${langPrefix}/`
     case "blog-page":
       return `${langPrefix}/blog`
+    case "blog-category":
+      return `${langPrefix}/blog/${doc.uid}`
     case "blog-post":
+      if (parent) {
+        return `${langPrefix}/blog/${parent._meta.uid}/${doc.uid}`
+      }
       return `${langPrefix}/blog/${doc.uid}`
     case "landing-page":
       return `${langPrefix}/landing/${doc.uid}`

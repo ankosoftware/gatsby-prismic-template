@@ -82,11 +82,7 @@ const Blog = ({ data, pageContext }) => {
             </div>
           </div>
         </div>
-        <Pagination
-          currentPage={currentPage}
-          numPages={numPages}
-          path={`${getLangPrefix(blog._meta.lang)}/blog/${blog._meta.uid}`}
-        />
+        <Pagination currentPage={currentPage} numPages={numPages} path={`${getLangPrefix(blog._meta.lang)}/blog`} />
         <Slices body={blog.body} />
       </Layout>
     )
