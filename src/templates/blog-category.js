@@ -38,14 +38,14 @@ const BlogCategory = ({ data, pageContext }) => {
               )
             })}
           </nav>
-          <div className="my-5 mt-1">
+          <div className="mt-10 mt-md-8 mt-sm-6 mb-4 mb-md-5">
             <RichText className="text-dark-blue" render={category.title} />
           </div>
           <div>
             {featuredPost ? (
-              <Background image={featuredPost.node.image}>
+              <Background image={featuredPost.node.image} className="background-category">
                 <Link to={linkResolver(featuredPost.node._meta)}>
-                  <RichText render={featuredPost.node.title} />
+                  <RichText render={featuredPost.node.title} className="my-auto" />
                 </Link>
               </Background>
             ) : null}

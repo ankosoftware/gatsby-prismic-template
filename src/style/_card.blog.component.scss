@@ -1,0 +1,9 @@
+.card-blog {
+  .gatsby-image-wrapper {
+    img {
+      width: $blog-list-card-image-width;
+      object-fit: $blog-list-card-image-fit;
+      height: $blog-list-card-image-height;
+    }
+  }
+}

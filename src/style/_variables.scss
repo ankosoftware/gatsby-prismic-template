@@ -15,9 +15,15 @@ $h1-font-size: 44px;
 $h2-font-size: 40px;
 $h3-font-size: 28px;
 $h4-font-size: 22px;
+$header-weight: 700;
 
 $headings-font-family: 'Roboto', sans-serif;
 $headings-line-height: 1.1;
+
+
+//text
+$p-font-size: 18px;
+$p-font-color: black;
 
 
 //border
@@ -190,6 +196,13 @@ $block-content-top-title-align: center;
 $block-content-top-text-align: center;
 $block-content-top-btn-width: 120px;
 $block-content-top-btn-size: lg;
+
+
+//blog
+$blog-list-card-image-width: 100%;
+$blog-list-card-image-fit: cover;
+$blog-list-card-image-height: 250px;
+
 
 /*
 // Color system
