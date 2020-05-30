@@ -3,3 +3,33 @@
   @extend .p-4;
   @extend .mb-5;
 }
+ #featured-posts-carousel {
+   .carousel-item {
+     height: 300px;
+     .gatsby-image-wrapper {
+       height: 300px;
+       img {
+         object-fit: cover;
+         width: 100%;
+         height:100%;
+       }
+     }
+   }
+ }
+.carousel-caption.light {
+  a {
+    color: $dark;
+  }
+  .featured-post-title {
+    color: $dark;
+    font-size: $h3-font-size;
+  }
+}
+ .carousel-caption.dark {
+   a {
+     color: $light;
+   }
+   .featured-post-title {
+     color: $light;
+   }
+ }

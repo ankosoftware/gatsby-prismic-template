@@ -3,49 +3,91 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout.component"
 import { Header } from "../components/header.component"
 import { Slices } from "../components/slices.component"
-import { Card } from "../components/card.blog.component"
-import { linkFragment } from "../link-resolver"
+import { Card } from "../components/common/card.blog.component"
+import { linkFragment, linkResolver } from "../link-resolver"
 import { RichText } from "../components/common/rich-text.component"
 import { PlainStructuredText } from "../components/common/plain-structured-text.component"
 import { Pagination } from "../components/common/pagination.component"
+import { getLangPrefix } from "../utils/langs"
+import { BannerCarousel } from "../components/banner-carousel.component"
+import { Image } from "../components/common/image.component"
+import { convertRichTextToPlain } from "../utils/text"
+import { isDark } from "../utils/styles"
+import Moment from "react-moment"
 
 const Blog = ({ data, pageContext }) => {
-  const page = data.prismic.allBlogPages.edges[0]
   const categories = data.prismic.allBlogCategorys.edges
-  const { posts, numPages, currentPage } = pageContext
-  if (page) {
+  const blogItem = data.prismic.allBlogPages.edges[0]
+  const { posts, currentPage, numPages, featured } = pageContext
+  if (blogItem) {
+    const blog = blogItem.node
     return (
       <Layout>
         <div className="container">
           <Header theme="light" />
         </div>
-        <div className="container">
-          <nav className="nav blog-list-nav">
-            <Link className="nav-link" activeClassName={"active"} to={"/blog"}>
+        <div className="container mt-6 mt-md-8 mb-4 mb-md-5">
+          <nav className="nav blog-category-nav mx-n3">
+            <Link className="nav-link" activeClassName={"active"} to={`${getLangPrefix(blog._meta.lang)}/blog`}>
               Last Posts
             </Link>
             {categories.map(item => {
               const category = item.node
               return (
-                <Link className="nav-link" to={`/blog/${category._meta.uid}`}>
+                <Link
+                  className="nav-link"
+                  activeClassName="active"
+                  to={`${getLangPrefix(category._meta.lang)}/blog/${category._meta.uid}`}
+                >
                   <PlainStructuredText structuredText={category.title} />
                 </Link>
               )
             })}
           </nav>
-          <div className="my-5 mt-1">
-            <RichText className="text-dark-blue" render={page.node.text_content} />
+          <div className="my-5">
+            <RichText className="text-dark-blue" render={blog.title} />
+            <RichText render={blog.text} />
+          </div>
+          <div className="mb-5">
+            <BannerCarousel
+              id="featured-posts-carousel"
+              slides={featured}
+              render={slide => {
+                const dark = isDark(slide.node.bgColor, slide.node.image)
+                return (
+                  <>
+                    <Image image={slide.node.image} />
+                    <div className={`carousel-caption d-none d-md-block ${dark ? "dark" : "light"}`}>
+                      <Link to={linkResolver(slide.node._meta)}>
+                        <h3 className="featured-post-title">
+                          {slide.node.pageTitle || convertRichTextToPlain(slide.node.title)}
+                        </h3>
+                        <span>
+                          <Moment format="MMM Do YYYY">{slide.node._meta.lastPublicationDate}</Moment>
+                        </span>
+                      </Link>
+                    </div>
+                  </>
+                )
+              }}
+            />
           </div>
           <div className="container-blog-list mx-auto">
             <div className="row mb-5">
-              {posts.map(item => {
-                return <Card item={item} />
-              })}
+              {(posts &&
+                posts.map(item => {
+                  return <Card item={item} />
+                })) ||
+                null}
             </div>
           </div>
         </div>
-        <Pagination currentPage={currentPage} numPages={numPages} path={"/blog"} />
-        <Slices body={page.node.body} />
+        <Pagination
+          currentPage={currentPage}
+          numPages={numPages}
+          path={`${getLangPrefix(blog._meta.lang)}/blog/${blog._meta.uid}`}
+        />
+        <Slices body={blog.body} />
       </Layout>
     )
   }
@@ -57,16 +99,35 @@ Blog.fragments = [linkFragment]
 export default Blog
 
 export const query = graphql`
-  query blogQuery {
+  query blogQuery($lang: String!) {
     prismic {
-      allBlogPages {
+      allBlogPages(lang: $lang) {
         edges {
           node {
+            bgColor
+            bgImage
+            pageTitle
+            pageDescription
             text
+            title
+            pageKeywords {
+              keyword
+            }
+            _meta {
+              lang
+              uid
+              type
+            }
             body {
               ... on PRISMIC_BlogPageBodyPricingPlans {
                 type
                 label
+                primary {
+                  bgColor
+                  bgImage
+                  title
+                  text
+                }
                 fields {
                   priceUnits
                   planPrice
@@ -105,6 +166,7 @@ export const query = graphql`
                 type
                 label
                 primary {
+                  title
                   text
                   bgColor
                   bgImage
@@ -116,14 +178,15 @@ export const query = graphql`
                 primary {
                   bgColor
                   bgImage
+                  title
                   text
                 }
                 fields {
                   image
                   linkStyle
                   linkText
-                  text
                   title
+                  text
                   link {
                     ...link
                   }
@@ -154,6 +217,7 @@ export const query = graphql`
                   bgImage
                   formScript
                   formUrl
+                  title
                   text
                 }
               }
@@ -161,7 +225,7 @@ export const query = graphql`
           }
         }
       }
-      allBlogCategorys {
+      allBlogCategorys(lang: $lang) {
         edges {
           node {
             title

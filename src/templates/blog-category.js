@@ -9,52 +9,75 @@ import { RichText } from "../components/common/rich-text.component"
 import { PlainStructuredText } from "../components/common/plain-structured-text.component"
 import { Pagination } from "../components/common/pagination.component"
 import { getLangPrefix } from "../utils/langs"
-import { Carousel } from "../components/carousel-banner.component"
-import { Background } from "../components/common/background-image.component"
-import { CustomLink } from "../components/common/custom-link.component"
+import { BannerCarousel } from "../components/banner-carousel.component"
+import { Image } from "../components/common/image.component"
+import { convertRichTextToPlain } from "../utils/text"
+import { isDark } from "../utils/styles"
+import Moment from "react-moment"
 
 const BlogCategory = ({ data, pageContext }) => {
   const categories = data.prismic.allBlogCategorys.edges
   const category = data.prismic.blogCategory
   const { posts, currentPage, numPages, featured } = pageContext
-  const featuredPost = featured[0]
   if (category) {
     return (
       <Layout>
         <div className="container">
           <Header theme="light" />
         </div>
-        <div className="container">
-          <nav className="nav blog-category-nav">
+        <div className="container mt-6 mt-md-8 mb-4 mb-md-5">
+          <nav className="nav blog-category-nav mx-n3">
             <Link className="nav-link" activeClassName={"active"} to={`${getLangPrefix(category._meta.lang)}/blog`}>
               Last Posts
             </Link>
             {categories.map(item => {
               const category = item.node
               return (
-                <Link className="nav-link" to={`${getLangPrefix(category._meta.lang)}/blog/${category._meta.uid}`}>
+                <Link
+                  className="nav-link"
+                  activeClassName="active"
+                  to={`${getLangPrefix(category._meta.lang)}/blog/${category._meta.uid}`}
+                >
                   <PlainStructuredText structuredText={category.title} />
                 </Link>
               )
             })}
           </nav>
-          <div className="mt-10 mt-md-8 mt-sm-6 mb-4 mb-md-5">
+          <div className="my-5">
             <RichText className="text-dark-blue" render={category.title} />
+            <RichText render={category.text} />
           </div>
-          <div>
-            {featuredPost ? (
-              <Background image={featuredPost.node.image} className="background-category">
-                <Link to={linkResolver(featuredPost.node._meta)}>
-                  <RichText render={featuredPost.node.title} className="my-auto" />
-                </Link>
-              </Background>
-            ) : null}
+          <div className="mb-5">
+            <BannerCarousel
+              id="featured-posts-carousel"
+              slides={featured}
+              render={slide => {
+                const dark = isDark(slide.node.bgColor, slide.node.image)
+                return (
+                  <>
+                    <Image image={slide.node.image} />
+                    <div className={`carousel-caption d-none d-md-block ${dark ? "dark" : "light"}`}>
+                      <Link to={linkResolver(slide.node._meta)}>
+                        <h3 className="featured-post-title">
+                          {slide.node.pageTitle || convertRichTextToPlain(slide.node.title)}
+                        </h3>
+                        <span>
+                          <Moment format="MMM Do YYYY">{slide.node._meta.lastPublicationDate}</Moment>
+                        </span>
+                      </Link>
+                    </div>
+                  </>
+                )
+              }}
+            />
           </div>
           <div className="container-blog-list mx-auto">
             <div className="row mb-5">
-              {posts.map(item => {
-                return <Card item={item} />
-              })}
+              {(posts &&
+                posts.map(item => {
+                  return <Card item={item} />
+                })) ||
+                null}
             </div>
           </div>
         </div>

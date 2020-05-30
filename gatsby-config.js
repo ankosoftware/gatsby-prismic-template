@@ -39,6 +39,21 @@ module.exports = {
         defaultLang: DEFAULT_LANG,
         langs: LANGUAGES,
         pages: [
+          {
+            type: "BlogCategory",
+            match: "/:lang?/blog/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/blog-category.js"),
+            langs: LANGUAGES,
+          },
+          {
+            type: "BlogPage",
+            match: "/:lang?/blog",
+            path: "/",
+            component: require.resolve("./src/templates/blog.js"),
+            langs: LANGUAGES,
+          },
+
           /* {
             type: "BlogCategory",
             match: "/:lang?/blog/:uid",
