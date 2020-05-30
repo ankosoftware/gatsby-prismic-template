@@ -14,20 +14,40 @@ import { Image } from "../components/common/image.component"
 import { convertRichTextToPlain } from "../utils/text"
 import { isDark } from "../utils/styles"
 import Moment from "react-moment"
+import SEO from "../components/common/seo.component"
 
 const BlogCategory = ({ data, pageContext }) => {
   const categories = data.prismic.allBlogCategorys.edges
   const category = data.prismic.blogCategory
   const { posts, currentPage, numPages, featured } = pageContext
   if (category) {
+    const {
+      _meta,
+      title,
+      text,
+      bgImage,
+      bgColor,
+      pageTitle,
+      pageDescription,
+      pageKeywords,
+      pagePreviewImage,
+      body,
+    } = category
     return (
       <Layout>
+        <SEO
+          title={pageTitle || title}
+          description={pageDescription || text}
+          keywords={pageKeywords}
+          image={pagePreviewImage || bgImage}
+          lang={_meta.lang}
+        />
         <div className="container">
           <Header theme="light" />
         </div>
         <div className="container mt-6 mt-md-8 mb-4 mb-md-5">
           <nav className="nav blog-category-nav mx-n3">
-            <Link className="nav-link" activeClassName={"active"} to={`${getLangPrefix(category._meta.lang)}/blog`}>
+            <Link className="nav-link" activeClassName={"active"} to={`${getLangPrefix(_meta.lang)}/blog`}>
               Last Posts
             </Link>
             {categories.map(item => {
@@ -44,8 +64,8 @@ const BlogCategory = ({ data, pageContext }) => {
             })}
           </nav>
           <div className="my-5">
-            <RichText className="text-dark-blue" render={category.title} />
-            <RichText render={category.text} />
+            <RichText className="text-dark-blue" render={title} />
+            <RichText render={text} />
           </div>
           <div className="mb-5">
             <BannerCarousel
@@ -57,7 +77,7 @@ const BlogCategory = ({ data, pageContext }) => {
                   <>
                     <Image image={slide.node.image} />
                     <div className={`carousel-caption d-none d-md-block ${dark ? "dark" : "light"}`}>
-                      <Link to={linkResolver(slide.node._meta)}>
+                      <Link to={linkResolver(slide.node._meta, slide.node.category)}>
                         <h3 className="featured-post-title">
                           {slide.node.pageTitle || convertRichTextToPlain(slide.node.title)}
                         </h3>
@@ -84,9 +104,9 @@ const BlogCategory = ({ data, pageContext }) => {
         <Pagination
           currentPage={currentPage}
           numPages={numPages}
-          path={`${getLangPrefix(category._meta.lang)}/blog/${category._meta.uid}`}
+          path={`${getLangPrefix(_meta.lang)}/blog/${_meta.uid}`}
         />
-        <Slices body={category.body} />
+        <Slices body={body} />
       </Layout>
     )
   }

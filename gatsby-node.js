@@ -188,4 +188,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       })
     })
   })
+
+  const blogPost = path.resolve("src/templates/blog-post.js")
+  blogPostQuery.data.prismic.allBlogPosts.edges.forEach(({ node }) => {
+    createPage({
+      path: `${getLangPrefix(node._meta.lang)}/blog${node.category ? "/" + node.category._meta.uid : ""}/${
+        node._meta.uid
+      }`,
+      component: blogPost,
+      context: {
+        uid: node._meta.uid,
+        lang: node._meta.lang,
+      },
+    })
+  })
 }

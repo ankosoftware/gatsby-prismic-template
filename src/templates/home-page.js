@@ -31,7 +31,7 @@ const HomePage = ({ data }) => {
           title={pageTitle || title}
           description={pageDescription || text}
           keywords={pageKeywords}
-          image={pagePreviewImage}
+          image={pagePreviewImage || bgImage}
           lang={_meta.lang}
         />
         <Section backgroundImage={bgImage} backgroundColor={bgColor}>

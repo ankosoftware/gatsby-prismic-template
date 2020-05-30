@@ -53,6 +53,13 @@ module.exports = {
             component: require.resolve("./src/templates/blog.js"),
             langs: LANGUAGES,
           },
+          {
+            type: "BlogPost",
+            match: "/:lang?/blog/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/blog-post.js"),
+            langs: LANGUAGES,
+          },
 
           /* {
             type: "BlogCategory",
@@ -61,13 +68,7 @@ module.exports = {
             component: require.resolve("./src/templates/blog-category.js"),
             langs: LANGUAGES,
           },
-          {
-            type: "BlogPost",
-            match: "/:lang?/blog/:uid",
-            path: "/",
-            component: require.resolve("./src/templates/blog-post.js"),
-            langs: LANGUAGES,
-          },
+
           {
             type: "LandingPage",
             match: "/:lang?/landing/:uid",
