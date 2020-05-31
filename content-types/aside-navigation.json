@@ -21,14 +21,14 @@
             "icon" : "filter_2",
             "display" : "list",
             "non-repeat" : {
-              "nav_link" : {
+              "nav-link" : {
                 "type" : "Link",
                 "config" : {
                   "label" : "Nav Link",
                   "allowTargetBlank" : true
                 }
               },
-              "nav_text" : {
+              "nav-text" : {
                 "type" : "Text",
                 "config" : {
                   "label" : "Nav Text",
@@ -52,14 +52,14 @@
                   "placeholder" : "Enter Link"
                 }
               },
-              "link_text" : {
+              "link-text" : {
                 "type" : "Text",
                 "config" : {
                   "label" : "Link Text",
                   "placeholder" : "Enter Link Text"
                 }
               },
-              "link_style" : {
+              "link-style" : {
                 "type" : "Select",
                 "config" : {
                   "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],

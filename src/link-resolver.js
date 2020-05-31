@@ -47,6 +47,15 @@ export const linkFragment = graphql`
             type
             uid
           }
+          parent {
+            ... on PRISMIC_ContentPage {
+              _meta {
+                lang
+                type
+                uid
+              }
+            }
+          }
         }
       }
     }

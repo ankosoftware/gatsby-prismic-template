@@ -76,13 +76,14 @@ module.exports = {
             component: require.resolve("./src/templates/landing-page.js"),
             langs: LANGUAGES,
           },
+          */
           {
             type: "ContentPage",
             match: "/:lang?/:uid",
             path: "/",
             component: require.resolve("./src/templates/content-page.js"),
             langs: LANGUAGES,
-          },*/
+          },
           {
             type: "HomePage",
             match: "/:lang?/",

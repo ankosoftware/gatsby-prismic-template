@@ -533,13 +533,13 @@ type PRISMIC_AsideNavigationBodyMenu {
 type PRISMIC_AsideNavigationBodyMenuFields {
   icon: PRISMIC_Json
   link: PRISMIC__Linkable
-  link_style: String
-  link_text: String
+  linkStyle: String
+  linkText: String
 }
 
 type PRISMIC_AsideNavigationBodyMenuPrimary {
-  nav_link: PRISMIC__Linkable
-  nav_text: String
+  navLink: PRISMIC__Linkable
+  navText: String
 }
 
 "A connection to a list of items."
@@ -1018,7 +1018,7 @@ type PRISMIC_BlogPostPageKeywords {
 type PRISMIC_ContentPage implements PRISMIC__Document & PRISMIC__Linkable {
   _linkType: String
   _meta: PRISMIC_Meta!
-  aside_navigation: PRISMIC__Linkable
+  asideNavigation: PRISMIC__Linkable
   bgColor: String
   bgImage: PRISMIC_Json
   body: [PRISMIC_ContentPageBody!]
@@ -1818,19 +1818,89 @@ type SitePageConnection {
 
 type SitePageContext {
   currentPage: Int
+  cursor: String
+  featured: [SitePageContextFeatured]
   id: String
   lang: String
+  lastQueryChunkEndCursor: String
   limit: Int
   numPages: Int
   paginationNextLang: String
+  paginationNextMeta: SitePageContextPaginationNextMeta
   paginationNextUid: String
   paginationPreviousLang: String
+  paginationPreviousMeta: SitePageContextPaginationPreviousMeta
   paginationPreviousUid: String
   posts: [SitePageContextPosts]
   prismicAllPagePaths: [String]
   prismicPreviewPage: Boolean
   rootQuery: String
   skip: Int
+  type: String
+  uid: String
+}
+
+type SitePageContextFeatured {
+  node: SitePageContextFeaturedNode
+}
+
+type SitePageContextFeaturedNode {
+  _meta: SitePageContextFeaturedNode_meta
+  _xtypename: String
+  category: SitePageContextFeaturedNodeCategory
+  image: SitePageContextFeaturedNodeImage
+  isFeaturedArticle: Boolean
+  title: [SitePageContextFeaturedNodeTitle]
+}
+
+type SitePageContextFeaturedNodeCategory {
+  _meta: SitePageContextFeaturedNodeCategory_meta
+  title: [SitePageContextFeaturedNodeCategoryTitle]
+}
+
+type SitePageContextFeaturedNodeCategoryTitle {
+  text: String
+  type: String
+}
+
+type SitePageContextFeaturedNodeCategory_meta {
+  lang: String
+  type: String
+  uid: String
+}
+
+type SitePageContextFeaturedNodeImage {
+  dimensions: SitePageContextFeaturedNodeImageDimensions
+  url: String
+}
+
+type SitePageContextFeaturedNodeImageDimensions {
+  height: Int
+  width: Int
+}
+
+type SitePageContextFeaturedNodeTitle {
+  text: String
+  type: String
+}
+
+type SitePageContextFeaturedNode_meta {
+  lang: String
+  type: String
+  uid: String
+}
+
+type SitePageContextPaginationNextMeta {
+  id: String
+  lang: String
+  type: String
+  uid: String
+}
+
+type SitePageContextPaginationPreviousMeta {
+  id: String
+  lang: String
+  type: String
   uid: String
 }
 
@@ -1842,6 +1912,8 @@ type SitePageContextPostsNode {
   _meta: SitePageContextPostsNode_meta
   _xtypename: String
   category: SitePageContextPostsNodeCategory
+  image: SitePageContextPostsNodeImage
+  isFeaturedArticle: Boolean
   title: [SitePageContextPostsNodeTitle]
 }
 
@@ -1859,6 +1931,16 @@ type SitePageContextPostsNodeCategory_meta {
   lang: String
   type: String
   uid: String
+}
+
+type SitePageContextPostsNodeImage {
+  dimensions: SitePageContextPostsNodeImageDimensions
+  url: String
+}
+
+type SitePageContextPostsNodeImageDimensions {
+  height: Int
+  width: Int
 }
 
 type SitePageContextPostsNodeTitle {
@@ -2956,21 +3038,37 @@ enum SitePageFieldsEnum {
   componentChunkName
   componentPath
   context___currentPage
+  context___cursor
+  context___featured
+  context___featured___node____xtypename
+  context___featured___node___isFeaturedArticle
+  context___featured___node___title
   context___id
   context___lang
+  context___lastQueryChunkEndCursor
   context___limit
   context___numPages
   context___paginationNextLang
+  context___paginationNextMeta___id
+  context___paginationNextMeta___lang
+  context___paginationNextMeta___type
+  context___paginationNextMeta___uid
   context___paginationNextUid
   context___paginationPreviousLang
+  context___paginationPreviousMeta___id
+  context___paginationPreviousMeta___lang
+  context___paginationPreviousMeta___type
+  context___paginationPreviousMeta___uid
   context___paginationPreviousUid
   context___posts
   context___posts___node____xtypename
+  context___posts___node___isFeaturedArticle
   context___posts___node___title
   context___prismicAllPagePaths
   context___prismicPreviewPage
   context___rootQuery
   context___skip
+  context___type
   context___uid
   id
   internalComponentName
@@ -3555,8 +3653,8 @@ input PRISMIC_WhereBlogPost {
 }
 
 input PRISMIC_WhereContentPage {
-  "aside_navigation"
-  aside_navigation: String
+  "aside-navigation"
+  asideNavigation: String
   pageDescription: String
   pageDescription_fulltext: String
   pageTitle: String
@@ -3645,21 +3743,103 @@ input SiteFilterInput {
   siteMetadata: SiteSiteMetadataFilterInput
 }
 
+input SitePageContextFeaturedFilterInput {
+  node: SitePageContextFeaturedNodeFilterInput
+}
+
+input SitePageContextFeaturedFilterListInput {
+  elemMatch: SitePageContextFeaturedFilterInput
+}
+
+input SitePageContextFeaturedNodeCategoryFilterInput {
+  _meta: SitePageContextFeaturedNodeCategory_metaFilterInput
+  title: SitePageContextFeaturedNodeCategoryTitleFilterListInput
+}
+
+input SitePageContextFeaturedNodeCategoryTitleFilterInput {
+  text: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+}
+
+input SitePageContextFeaturedNodeCategoryTitleFilterListInput {
+  elemMatch: SitePageContextFeaturedNodeCategoryTitleFilterInput
+}
+
+input SitePageContextFeaturedNodeCategory_metaFilterInput {
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
+input SitePageContextFeaturedNodeFilterInput {
+  _meta: SitePageContextFeaturedNode_metaFilterInput
+  _xtypename: StringQueryOperatorInput
+  category: SitePageContextFeaturedNodeCategoryFilterInput
+  image: SitePageContextFeaturedNodeImageFilterInput
+  isFeaturedArticle: BooleanQueryOperatorInput
+  title: SitePageContextFeaturedNodeTitleFilterListInput
+}
+
+input SitePageContextFeaturedNodeImageDimensionsFilterInput {
+  height: IntQueryOperatorInput
+  width: IntQueryOperatorInput
+}
+
+input SitePageContextFeaturedNodeImageFilterInput {
+  dimensions: SitePageContextFeaturedNodeImageDimensionsFilterInput
+  url: StringQueryOperatorInput
+}
+
+input SitePageContextFeaturedNodeTitleFilterInput {
+  text: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+}
+
+input SitePageContextFeaturedNodeTitleFilterListInput {
+  elemMatch: SitePageContextFeaturedNodeTitleFilterInput
+}
+
+input SitePageContextFeaturedNode_metaFilterInput {
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
 input SitePageContextFilterInput {
   currentPage: IntQueryOperatorInput
+  cursor: StringQueryOperatorInput
+  featured: SitePageContextFeaturedFilterListInput
   id: StringQueryOperatorInput
   lang: StringQueryOperatorInput
+  lastQueryChunkEndCursor: StringQueryOperatorInput
   limit: IntQueryOperatorInput
   numPages: IntQueryOperatorInput
   paginationNextLang: StringQueryOperatorInput
+  paginationNextMeta: SitePageContextPaginationNextMetaFilterInput
   paginationNextUid: StringQueryOperatorInput
   paginationPreviousLang: StringQueryOperatorInput
+  paginationPreviousMeta: SitePageContextPaginationPreviousMetaFilterInput
   paginationPreviousUid: StringQueryOperatorInput
   posts: SitePageContextPostsFilterListInput
   prismicAllPagePaths: StringQueryOperatorInput
   prismicPreviewPage: BooleanQueryOperatorInput
   rootQuery: StringQueryOperatorInput
   skip: IntQueryOperatorInput
+  type: StringQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
+input SitePageContextPaginationNextMetaFilterInput {
+  id: StringQueryOperatorInput
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+  uid: StringQueryOperatorInput
+}
+
+input SitePageContextPaginationPreviousMetaFilterInput {
+  id: StringQueryOperatorInput
+  lang: StringQueryOperatorInput
+  type: StringQueryOperatorInput
   uid: StringQueryOperatorInput
 }
 
@@ -3695,7 +3875,19 @@ input SitePageContextPostsNodeFilterInput {
   _meta: SitePageContextPostsNode_metaFilterInput
   _xtypename: StringQueryOperatorInput
   category: SitePageContextPostsNodeCategoryFilterInput
+  image: SitePageContextPostsNodeImageFilterInput
+  isFeaturedArticle: BooleanQueryOperatorInput
   title: SitePageContextPostsNodeTitleFilterListInput
+}
+
+input SitePageContextPostsNodeImageDimensionsFilterInput {
+  height: IntQueryOperatorInput
+  width: IntQueryOperatorInput
+}
+
+input SitePageContextPostsNodeImageFilterInput {
+  dimensions: SitePageContextPostsNodeImageDimensionsFilterInput
+  url: StringQueryOperatorInput
 }
 
 input SitePageContextPostsNodeTitleFilterInput {

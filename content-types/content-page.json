@@ -16,7 +16,7 @@
         "label" : "Parent"
       }
     },
-    "aside_navigation" : {
+    "aside-navigation" : {
       "type" : "Link",
       "config" : {
         "select" : "document",

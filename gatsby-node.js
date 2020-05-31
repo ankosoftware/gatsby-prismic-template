@@ -202,4 +202,67 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       },
     })
   })
+
+  const contentPage = path.resolve("src/templates/content-page.js")
+  const contentPageQuery = await graphql(`
+    {
+      prismic {
+        allContentPages {
+          edges {
+            node {
+              _meta {
+                uid
+                type
+                lang
+              }
+              parent {
+                ... on PRISMIC_ContentPage {
+                  _meta {
+                    lang
+                    type
+                    uid
+                  }
+                  parent {
+                    ... on PRISMIC_ContentPage {
+                      _meta {
+                        type
+                        uid
+                        lang
+                      }
+                      parent {
+                        ... on PRISMIC_ContentPage {
+                          _meta {
+                            type
+                            uid
+                            lang
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (contentPageQuery.errors) {
+    return reporter.panicOnBuild("Error while running GraphQL query")
+  }
+  contentPageQuery.data.prismic.allContentPages.edges.forEach(({ node }) => {
+    createPage({
+      path: node.parent
+        ? node.parent.parent
+          ? `/${node.parent.parent._meta.uid}/${node.parent._meta.uid}/${node._meta.uid}`
+          : `/${node.parent._meta.uid}/${node._meta.uid}`
+        : `/${node._meta.uid}`,
+      component: contentPage,
+      context: {
+        uid: node._meta.uid,
+        lang: node._meta.lang,
+      },
+    })
+  })
 }
