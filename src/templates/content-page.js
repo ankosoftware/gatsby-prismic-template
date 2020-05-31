@@ -1,5 +1,5 @@
 import React from "react"
-import LayoutComponent from "../components/layout.component"
+import Layout from "../components/layout.component"
 import { Header } from "../components/header.component"
 import { graphql } from "gatsby"
 import { linkFragment, linkResolver } from "../link-resolver"
@@ -29,7 +29,7 @@ const ContentPage = ({ data }) => {
     } = page
     const dark = isDark(bgColor, bgImage)
     return (
-      <LayoutComponent>
+      <Layout>
         <SEO
           title={pageTitle || title}
           description={pageDescription || text}
@@ -62,7 +62,7 @@ const ContentPage = ({ data }) => {
         ) : (
           <Slices body={body} />
         )}
-      </LayoutComponent>
+      </Layout>
     )
   }
   return null
@@ -112,33 +112,6 @@ export const query = graphql`
                     ...link
                   }
                   navText
-                }
-              }
-            }
-          }
-        }
-        parent {
-          ... on PRISMIC_ContentPage {
-            _meta {
-              lang
-              type
-              uid
-            }
-            parent {
-              ... on PRISMIC_ContentPage {
-                _meta {
-                  type
-                  uid
-                  lang
-                }
-                parent {
-                  ... on PRISMIC_ContentPage {
-                    _meta {
-                      type
-                      uid
-                      lang
-                    }
-                  }
                 }
               }
             }

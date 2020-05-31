@@ -60,15 +60,6 @@ module.exports = {
             component: require.resolve("./src/templates/blog-post.js"),
             langs: LANGUAGES,
           },
-
-          /* {
-            type: "BlogCategory",
-            match: "/:lang?/blog/:uid",
-            path: "/",
-            component: require.resolve("./src/templates/blog-category.js"),
-            langs: LANGUAGES,
-          },
-
           {
             type: "LandingPage",
             match: "/:lang?/landing/:uid",
@@ -76,7 +67,6 @@ module.exports = {
             component: require.resolve("./src/templates/landing-page.js"),
             langs: LANGUAGES,
           },
-          */
           {
             type: "ContentPage",
             match: "/:lang?/:uid",
