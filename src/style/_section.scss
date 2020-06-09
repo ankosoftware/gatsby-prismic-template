@@ -1,0 +1,14 @@
+.section {
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
+  &.section-dark {
+    color: $light;
+  }
+  &.section-light {
+    color: $dark;
+  }
+  &.home-page-section {
+    padding-top: $section-home-page-padding-y;
+    padding-bottom: $section-home-page-padding-y;
+  }
+}

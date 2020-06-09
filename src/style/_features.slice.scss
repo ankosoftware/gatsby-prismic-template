@@ -1,3 +1,9 @@
+.features-slice-title {
+  text-align: $feature-title-align;
+}
+.features-slice-text {
+  text-align: $feature-text-align;
+}
 //features-accordion
 .features-accordion-img {
   margin-right: 70px;
@@ -44,7 +50,6 @@
   line-height: 45px;
 }
 
-
 //feature-list
 .list-numbered-number-block {
   width: $feature-list-image-width;
@@ -65,7 +70,6 @@
     width: $feature-list-image-width;;
   }
 }
-
 
 .features-slice-list-process {
   margin-left: 150px;
@@ -127,7 +131,6 @@
     }
   }
 }
-
 
 //col-1-detailed
 .col-1-img {

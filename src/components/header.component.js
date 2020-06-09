@@ -65,23 +65,23 @@ const query = graphql`
     }
   }
 `
-export const Header = () => (
+export const Header = ({ className = "", theme = "light" }) => (
   <StaticQuery
     query={query}
     render={withPreview(
       data => {
         const { node: header } = data.prismic.allHeaders.edges[0]
         return (
-          <div>
+          <>
             <BootstrapNavbar
-              className="navbar navbar-expand-lg navbar-light bg-light container"
-              theme={"light"}
+              className="navbar-expand-lg"
+              theme={theme}
               logoLight={header.logoLight}
               logoDark={header.logoDark}
               menu={header.primaryNavigation}
             />
             <Slices body={header.body} />
-          </div>
+          </>
         )
       },
       query,

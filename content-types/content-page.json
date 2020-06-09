@@ -1,57 +1,61 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Page ID",
-        "placeholder" : "Enter Page ID",
-        "useAsTitle" : true
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Page ID",
+        "placeholder": "Enter Page ID",
+        "useAsTitle": true
       }
     },
-    "parent" : {
-      "type" : "Link",
-      "config" : {
-        "select" : "document",
-        "customtypes" : [ "content-page" ],
-        "label" : "Parent"
+    "parent": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": [
+          "content-page"
+        ],
+        "label": "Parent"
       }
     },
-    "aside-navigation" : {
-      "type" : "Link",
-      "config" : {
-        "select" : "document",
-        "customtypes" : [ "aside-navigation" ],
-        "label" : "Aside Navigation"
+    "aside-navigation": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": [
+          "aside-navigation"
+        ],
+        "label": "Aside Navigation"
       }
     },
-    "bg-color" : {
-      "type" : "Color",
-      "config" : {
-        "label" : "Background Color"
+    "bg-color": {
+      "type": "Color",
+      "config": {
+        "label": "Background Color"
       }
     },
-    "bg-image" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Background Image"
+    "bg-image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Background Image"
       }
     },
-    "title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-        "label" : "Title",
-        "placeholder" : "Enter Title"
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Title",
+        "placeholder": "Enter Title"
       }
     },
-    "text" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Text",
-        "placeholder" : "Enter Text"
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Text",
+        "placeholder": "Enter Text"
       }
     },
     "body": {
@@ -185,6 +189,28 @@
             {
               "name": "block-3-detailed",
               "display": "block-3-detailed"
+            }
+          ],
+          "block-with-text-and-image": [
+            {
+              "name": "content-right",
+              "display": "content-right"
+            },
+            {
+              "name": "content-right-bg",
+              "display": "content-right-bg"
+            },
+            {
+              "name": "content-left",
+              "display": "content-left"
+            },
+            {
+              "name": "content-left-bg",
+              "display": "content-left-bg"
+            },
+            {
+              "name": "content-top",
+              "display": "content-top"
             }
           ]
         },

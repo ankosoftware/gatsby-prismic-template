@@ -1,20 +1,22 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Post ID",
-        "placeholder" : "Enter Post ID",
-        "useAsTitle" : true
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Post ID",
+        "placeholder": "Enter Post ID",
+        "useAsTitle": true
       }
     },
-    "category" : {
-      "type" : "Link",
-      "config" : {
-        "select" : "document",
-        "customtypes" : [ "blog-category" ],
-        "label" : "Category",
-        "placeholder" : "Select Category"
+    "category": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": [
+          "blog-category"
+        ],
+        "label": "Category",
+        "placeholder": "Select Category"
       }
     },
     "bg-color": {
@@ -23,12 +25,12 @@
         "label": "Background Color"
       }
     },
-    "image" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Image"
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
       }
     },
     "title": {
@@ -39,12 +41,19 @@
         "placeholder": "Enter Title"
       }
     },
-    "text" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Text Content",
-        "placeholder" : "Enter Text Content"
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Text Content",
+        "placeholder": "Enter Text Content"
+      }
+    },
+    "is-featured-article": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Is Featured Article"
       }
     },
     "body": {
@@ -178,6 +187,28 @@
             {
               "name": "block-3-detailed",
               "display": "block-3-detailed"
+            }
+          ],
+          "block-with-text-and-image": [
+            {
+              "name": "content-right",
+              "display": "content-right"
+            },
+            {
+              "name": "content-right-bg",
+              "display": "content-right-bg"
+            },
+            {
+              "name": "content-left",
+              "display": "content-left"
+            },
+            {
+              "name": "content-left-bg",
+              "display": "content-left-bg"
+            },
+            {
+              "name": "content-top",
+              "display": "content-top"
             }
           ]
         },

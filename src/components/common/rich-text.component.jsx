@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import { RichText as PrismicRichText } from "prismic-reactjs"
 import { linkResolver } from "../../link-resolver"
 import Prism from "prismjs"
+import "prismjs/plugins/autoloader/prism-autoloader"
 
 export const RichText = ({ render, className }) => {
   const element = useRef(null)

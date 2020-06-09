@@ -1,40 +1,52 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/variables";
-@import url('https://fonts.googleapis.com/css?family=Material+Icons+Round');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+//Section
+$section-padding-y: 60px !default;
+$section-home-page-padding-y: $section-padding-y !default;
+$section-content-page-padding-y: $section-padding-y !default;
+
+//Slices
+
+//Feature Slice
+$feature-title-align: center;
+$feature-text-align: center;
 
 
-// common
-$font-family-base: 'Roboto', sans-serif;
-$body-color: #565656;
+
+
+
+
+
+
 
 
 // header
-$h1-font-size: 44px;
-$h2-font-size: 40px;
-$h3-font-size: 28px;
-$h4-font-size: 22px;
-$header-weight: 700;
-
-$headings-font-family: 'Roboto', sans-serif;
-$headings-line-height: 1.1;
-
-
-//text
-$p-font-size: 18px;
-$p-font-color: black;
-
-
-//border
-$border-radius: 3px;
-$border-radius-lg: $border-radius;
+//$h1-font-size: 44px;
+//$h2-font-size: 40px;
+//$h3-font-size: 28px;
+//$h4-font-size: 22px;
+//$header-weight: 700;
+//
+//$headings-font-family: 'Roboto', sans-serif;
+//$headings-line-height: 1.1;
+//
+//
+////text
+//$p-font-size: 18px;
+//$p-font-color: black;
+//
+//
+////border
+//$border-radius: 3px;
+//$border-radius-lg: $border-radius;
 
 
 //link
-$link-color: #428bca;
+//$link-color: #428bca;
 
-
+/*
 //input
 $input-placeholder-color: #aaaaaa;
 $input-padding-x: 35px;
@@ -47,20 +59,21 @@ $input-border-radius: $border-radius;
 $input-border-radius-lg: $border-radius;
 $input-border-color: rgba(213, 212, 212, 0.21);
 $input-focus-border-color: #66afe9;
+*/
 
 
 //color
-$primary: #5170dd;
-$dark-blue: #2c3e50;
-
-$theme-colors: ();
+//$primary: #5170dd;
+//$dark-blue: #2c3e50;
+//$theme-colors: ();
 
 
 //navbar
-$navbar-light-active-color: $primary;
-$navbar-light-hover-color: $primary;
-$navbar-light-color: #000000;
+//$navbar-light-active-color: $primary;
+//$navbar-light-hover-color: $primary;
+//$navbar-light-color: #000000;
 $navbar-logo-size: 100px;
+
 
 
 //footer

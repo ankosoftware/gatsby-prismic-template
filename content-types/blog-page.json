@@ -170,6 +170,28 @@
               "name": "block-3-detailed",
               "display": "block-3-detailed"
             }
+          ],
+          "block-with-text-and-image": [
+            {
+              "name": "content-right",
+              "display": "content-right"
+            },
+            {
+              "name": "content-right-bg",
+              "display": "content-right-bg"
+            },
+            {
+              "name": "content-left",
+              "display": "content-left"
+            },
+            {
+              "name": "content-left-bg",
+              "display": "content-left-bg"
+            },
+            {
+              "name": "content-top",
+              "display": "content-top"
+            }
           ]
         },
         "choices": {

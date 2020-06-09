@@ -1,4 +1,4 @@
-const { DEFAULT_LANG, LANGUAGES } = require("./propreties")
+const { DEFAULT_LANG, LANGUAGES, REPOSITORY_NAME } = require("./propreties")
 
 module.exports = {
   siteMetadata: {
@@ -33,7 +33,7 @@ module.exports = {
     {
       resolve: "gatsby-source-prismic-graphql",
       options: {
-        repositoryName: "anko-template",
+        repositoryName: REPOSITORY_NAME,
         path: "/preview",
         previews: true,
         defaultLang: DEFAULT_LANG,

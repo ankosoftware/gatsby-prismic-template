@@ -39,12 +39,16 @@ const ContentPage = ({ data }) => {
         />
         <Section backgroundImage={bgImage} backgroundColor={bgColor}>
           <Header theme={dark ? "dark" : "light"} />
-          <div className="mt-10 pb-5 text-center">
-            <RichText render={title} linkResolver={linkResolver} />
-          </div>
-          <div className="text-center">
-            <RichText render={text} linkResolver={linkResolver} />
-          </div>
+          {title || text ? (
+            <>
+              <div className="content-page-title">
+                <RichText render={title} linkResolver={linkResolver} />
+              </div>
+              <div className="content-page-text">
+                <RichText render={text} linkResolver={linkResolver} />
+              </div>
+            </>
+          ) : null}
         </Section>
         {asideNavigation ? (
           <div className="container">
@@ -159,6 +163,7 @@ export const query = graphql`
             type
             label
             primary {
+              title
               text
               bgColor
               bgImage

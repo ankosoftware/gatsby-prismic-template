@@ -1,7 +1,15 @@
-.navbar-brand {
-  .gatsby-image-wrapper {
-    img {
-      width: $navbar-logo-size;
+.navbar {
+  top: -$section-padding-y;
+  .navbar-brand {
+    .gatsby-image-wrapper {
+      img {
+        width: $navbar-logo-size;
+      }
     }
+  }
+}
+.container {
+  .navbar {
+    @extend .mx-lg-n3;
   }
 }

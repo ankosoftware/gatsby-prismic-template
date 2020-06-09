@@ -1,5 +1,5 @@
 import React from "react"
-import LayoutComponent from "../components/layout.component"
+import Layout from "../components/layout.component"
 import { Header } from "../components/header.component"
 import { graphql } from "gatsby"
 import { linkFragment } from "../link-resolver"
@@ -26,7 +26,7 @@ const HomePage = ({ data }) => {
     } = page.node
     const dark = isDark(bgColor, bgImage)
     return (
-      <LayoutComponent>
+      <Layout className="home-page">
         <SEO
           title={pageTitle || title}
           description={pageDescription || text}
@@ -34,17 +34,17 @@ const HomePage = ({ data }) => {
           image={pagePreviewImage || bgImage}
           lang={_meta.lang}
         />
-        <Section backgroundImage={bgImage} backgroundColor={bgColor}>
+        <Section className="home-page-section" backgroundImage={bgImage} backgroundColor={bgColor}>
           <Header theme={dark ? "dark" : "light"} />
-          <div className="mt-10 text-center">
+          <div className="home-page-title">
             <RichText render={title} />
           </div>
-          <div className="text-center">
+          <div className="home-page-text">
             <RichText render={text} />
           </div>
         </Section>
         <Slices body={body} />
-      </LayoutComponent>
+      </Layout>
     )
   }
   return null

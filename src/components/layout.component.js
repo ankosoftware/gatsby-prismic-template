@@ -10,10 +10,10 @@ import PropTypes from "prop-types"
 
 import { Footer } from "./footer.component"
 
-const LayoutComponent = ({ children }) => {
+const LayoutComponent = ({ children, className = "" }) => {
   return (
     <>
-      <main>{children}</main>
+      <main className={className}>{children}</main>
       <Footer />
     </>
   )

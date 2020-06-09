@@ -12,14 +12,14 @@ export const Features = ({ slice }) => {
   const { primary, fields, label } = slice
   const { bgColor, bgImage } = primary
   return (
-    <Section className="section py-5" backgroundImage={bgImage} backgroundColor={bgColor}>
-      <div className={`features-slice ${label ? "features-slice-" + label : ""}`}>
-        <div className="text-center pb-5">
-          <RichText render={primary.title} />
-          <RichText render={primary.text} />
-        </div>
-        <Collection items={fields} type={label} />
-      </div>
+    <Section
+      backgroundImage={bgImage}
+      backgroundColor={bgColor}
+      className={`features-slice ${label ? "features-slice-" + label : ""}`}
+    >
+      <RichText className="features-slice-title" render={primary.title} />
+      <RichText className="features-slice-text" render={primary.text} />
+      <Collection items={fields} type={label} />
     </Section>
   )
 }
