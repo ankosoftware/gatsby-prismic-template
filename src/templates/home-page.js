@@ -1,53 +1,11 @@
 import React from "react"
-import Layout from "../components/layout.component"
-import { Header } from "../components/header.component"
 import { graphql } from "gatsby"
 import { linkFragment } from "../link-resolver"
-import { isDark } from "../utils/styles"
-import { Slices } from "../components/slices.component"
-import { Section } from "../components/common/section.component"
-import { RichText } from "../components/common/rich-text.component"
-import SEO from "../components/common/seo.component"
+import { HomePageComponent } from "../components/pages/home-page.component"
 
 const HomePage = ({ data }) => {
   const page = data.prismic.allHomePages.edges[0]
-  if (page) {
-    const {
-      bgColor,
-      bgImage,
-      title,
-      text,
-      body,
-      pageTitle,
-      pageDescription,
-      pageKeywords,
-      pagePreviewImage,
-      _meta,
-    } = page.node
-    const dark = isDark(bgColor, bgImage)
-    return (
-      <Layout className="home-page">
-        <SEO
-          title={pageTitle || title}
-          description={pageDescription || text}
-          keywords={pageKeywords}
-          image={pagePreviewImage || bgImage}
-          lang={_meta.lang}
-        />
-        <Section className="home-page-section" backgroundImage={bgImage} backgroundColor={bgColor}>
-          <Header theme={dark ? "dark" : "light"} />
-          <div className="home-page-title">
-            <RichText render={title} />
-          </div>
-          <div className="home-page-text">
-            <RichText render={text} />
-          </div>
-        </Section>
-        <Slices body={body} />
-      </Layout>
-    )
-  }
-  return null
+  return <HomePageComponent page={page} />
 }
 
 HomePage.fragments = [linkFragment]
