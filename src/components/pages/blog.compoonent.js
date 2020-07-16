@@ -98,7 +98,11 @@ export const BlogComponent = ({ blogPage, featured, posts, numPages, currentPage
             </div>
           </div>
         </div>
-        <Pagination currentPage={currentPage} numPages={numPages} path={`${getLangPrefix(_meta.lang)}/blog`} />
+        <Pagination
+          currentPage={currentPage}
+          numPages={numPages}
+          path={`${getLangPrefix(_meta.lang)}/blog${_meta.type === "blog" ? "" : "/" + _meta.uid}`}
+        />
         <Slices body={body} />
       </Layout>
     )
