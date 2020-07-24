@@ -1,127 +1,136 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Footer ID",
-        "placeholder" : "Enter Footer ID",
-        "useAsTitle" : true
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Footer ID",
+        "placeholder": "Enter Footer ID",
+        "useAsTitle": true
       }
     },
-    "bg-color" : {
-      "type" : "Color",
-      "config" : {
-        "label" : "Background Color"
+    "bg-color": {
+      "type": "Color",
+      "config": {
+        "label": "Background Color"
       }
     },
-    "text" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Text",
-        "placeholder" : "Enter Text"
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Text",
+        "placeholder": "Enter Text"
       }
     },
-    "logo" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Logo"
+    "logo": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Logo"
       }
     },
-    "copyright" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Copyright",
-        "placeholder" : "Enter Copyright"
+    "copyright": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Copyright",
+        "placeholder": "Enter Copyright"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : {
-          "menu" : [ ]
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "menu": []
         },
-        "choices" : {
-          "custom-script" : {
-            "type" : "Slice",
-            "fieldset" : "Custom Script",
-            "description" : "Custom Script to embed to all HTML pages",
-            "icon" : "description",
-            "display" : "list",
-            "non-repeat" : { },
-            "repeat" : {
-              "script-html" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Script HTML",
-                  "placeholder" : "Enter Script HTML"
+        "choices": {
+          "custom-script": {
+            "type": "Slice",
+            "fieldset": "Custom Script",
+            "description": "Custom Script to embed to all HTML pages",
+            "icon": "description",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "script-html": {
+                "type": "Text",
+                "config": {
+                  "label": "Script HTML",
+                  "placeholder": "Enter Script HTML"
                 }
               },
-              "script-url" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Script URI",
-                  "placeholder" : "Enter Script URI"
+              "script-url": {
+                "type": "Text",
+                "config": {
+                  "label": "Script URI",
+                  "placeholder": "Enter Script URI"
                 }
               }
             }
           },
-          "menu" : {
-            "type" : "Slice",
-            "fieldset" : "Menu",
-            "description" : "Nav item",
-            "icon" : "filter_2",
-            "display" : "list",
-            "non-repeat" : {
-              "nav-link" : {
-                "type" : "Link",
-                "config" : {
-                  "label" : "Nav Link",
-                  "allowTargetBlank" : true
+          "menu": {
+            "type": "Slice",
+            "fieldset": "Menu",
+            "description": "Nav item",
+            "icon": "filter_2",
+            "display": "list",
+            "non-repeat": {
+              "nav-link": {
+                "type": "Link",
+                "config": {
+                  "label": "Nav Link",
+                  "allowTargetBlank": true
                 }
               },
-              "nav-text" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Nav Text",
-                  "placeholder" : "Enter Nav Text"
+              "nav-text": {
+                "type": "Text",
+                "config": {
+                  "label": "Nav Text",
+                  "placeholder": "Enter Nav Text"
                 }
               }
             },
-            "repeat" : {
-              "icon" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Icon"
+            "repeat": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Icon"
                 }
               },
-              "link" : {
-                "type" : "Link",
-                "config" : {
-                  "label" : "link",
-                  "placeholder" : "Enter Link"
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "link",
+                  "placeholder": "Enter Link"
                 }
               },
-              "link-text" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Link Text",
-                  "placeholder" : "Enter Link Text"
+              "link-text": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": "Enter Link Text"
                 }
               },
-              "link-style" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
-                  "default_value" : "link",
-                  "label" : "Link Style",
-                  "placeholder" : "Select Link Style"
+              "link-style": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "link",
+                    "button-primary",
+                    "button-secondary",
+                    "button-success",
+                    "button-danger",
+                    "button-warning",
+                    "button-info",
+                    "button-dark"
+                  ],
+                  "default_value": "link",
+                  "label": "Link Style",
+                  "placeholder": "Select Link Style"
                 }
               }
             }

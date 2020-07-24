@@ -8,6 +8,7 @@ import { TextSlice } from "./slices/text.slice"
 import { ItemsCollection } from "./slices/items-collection.slice"
 import { Pricing } from "./slices/pricing.slice"
 import { MenuSlice } from "./slices/menu.slice"
+import { GallerySlice } from "./slices/gallery.slice"
 
 export const Slices = ({ body }) => {
   if (body) {
@@ -30,6 +31,8 @@ export const Slices = ({ body }) => {
             return <Pricing slice={slice} />
           case "menu":
             return <MenuSlice slice={slice} />
+          case "gallery":
+            return <GallerySlice slice={slice}/>
           default:
             return <DefaultSlice slice={slice} />
         }

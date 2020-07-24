@@ -1,131 +1,149 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Header ID",
-        "placeholder" : "Enter Header ID",
-        "useAsTitle" : true
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Header ID",
+        "placeholder": "Enter Header ID",
+        "useAsTitle": true
       }
     },
-    "logo-light" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Logo Light"
+    "logo-light": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Logo Light"
       }
     },
-    "logo-dark" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Logo Dark"
+    "logo-dark": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Logo Dark"
       }
     },
-    "primary-navigation" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "icon" : {
-            "type" : "Image",
-            "config" : {
-              "constraint" : { },
-              "thumbnails" : [ ],
-              "label" : "Icon"
+    "primary-navigation": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Icon"
             }
           },
-          "link" : {
-            "type" : "Link",
-            "config" : {
-              "label" : "Link"
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link"
             }
           },
-          "link-text" : {
-            "type" : "Text",
-            "config" : {
-              "label" : "Link Text",
-              "placeholder" : "Enter Link Text"
+          "link-text": {
+            "type": "Text",
+            "config": {
+              "label": "Link Text",
+              "placeholder": "Enter Link Text"
             }
           },
-          "link-style" : {
-            "type" : "Select",
-            "config" : {
-              "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
-              "default_value" : "link",
-              "label" : "Link Style",
-              "placeholder" : "Select Link Style"
+          "link-style": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "link",
+                "button-primary",
+                "button-secondary",
+                "button-success",
+                "button-danger",
+                "button-warning",
+                "button-info",
+                "button-dark"
+              ],
+              "default_value": "link",
+              "label": "Link Style",
+              "placeholder": "Select Link Style"
             }
           }
         },
-        "label" : "Primary Navigation"
+        "label": "Primary Navigation"
       }
     },
-    "secondary-navigation" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "icon" : {
-            "type" : "Image",
-            "config" : {
-              "constraint" : { },
-              "thumbnails" : [ ],
-              "label" : "Icon"
+    "secondary-navigation": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "icon": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Icon"
             }
           },
-          "link" : {
-            "type" : "Link",
-            "config" : {
-              "label" : "Link"
+          "link": {
+            "type": "Link",
+            "config": {
+              "label": "Link"
             }
           },
-          "link-text" : {
-            "type" : "Text",
-            "config" : {
-              "label" : "Link Text",
-              "placeholder" : "Enter Link Text"
+          "link-text": {
+            "type": "Text",
+            "config": {
+              "label": "Link Text",
+              "placeholder": "Enter Link Text"
             }
           },
-          "link-style" : {
-            "type" : "Select",
-            "config" : {
-              "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
-              "default_value" : "link",
-              "label" : "Link Style",
-              "placeholder" : "Select Link Style"
+          "link-style": {
+            "type": "Select",
+            "config": {
+              "options": [
+                "link",
+                "button-primary",
+                "button-secondary",
+                "button-success",
+                "button-danger",
+                "button-warning",
+                "button-info",
+                "button-dark"
+              ],
+              "default_value": "link",
+              "label": "Link Style",
+              "placeholder": "Select Link Style"
             }
           }
         },
-        "label" : "Secondary Navigation"
+        "label": "Secondary Navigation"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : {
-          "custom-script" : {
-            "type" : "Slice",
-            "fieldset" : "Custom Script",
-            "description" : "Custom Script to embed to all HTML pages",
-            "icon" : "description",
-            "display" : "list",
-            "non-repeat" : { },
-            "repeat" : {
-              "script-html" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Script html",
-                  "placeholder" : "Enter Script html"
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "custom-script": {
+            "type": "Slice",
+            "fieldset": "Custom Script",
+            "description": "Custom Script to embed to all HTML pages",
+            "icon": "description",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "script-html": {
+                "type": "Text",
+                "config": {
+                  "label": "Script html",
+                  "placeholder": "Enter Script html"
                 }
               },
-              "script-url" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Script url",
-                  "placeholder" : "Enter Script url"
+              "script-url": {
+                "type": "Text",
+                "config": {
+                  "label": "Script url",
+                  "placeholder": "Enter Script url"
                 }
               }
             }

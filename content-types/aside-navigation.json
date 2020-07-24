@@ -1,71 +1,80 @@
 {
-  "Main" : {
-    "text" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label" : "Text",
-        "placeholder" : "Enter Text"
+  "Main": {
+    "text": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "Text",
+        "placeholder": "Enter Text"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : {
-          "menu" : {
-            "type" : "Slice",
-            "fieldset" : "Menu",
-            "description" : "Nav item",
-            "icon" : "filter_2",
-            "display" : "list",
-            "non-repeat" : {
-              "nav-link" : {
-                "type" : "Link",
-                "config" : {
-                  "label" : "Nav Link",
-                  "allowTargetBlank" : true
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "menu": {
+            "type": "Slice",
+            "fieldset": "Menu",
+            "description": "Nav item",
+            "icon": "filter_2",
+            "display": "list",
+            "non-repeat": {
+              "nav-link": {
+                "type": "Link",
+                "config": {
+                  "label": "Nav Link",
+                  "allowTargetBlank": true
                 }
               },
-              "nav-text" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Nav Text",
-                  "placeholder" : "Enter Nav Text"
+              "nav-text": {
+                "type": "Text",
+                "config": {
+                  "label": "Nav Text",
+                  "placeholder": "Enter Nav Text"
                 }
               }
             },
-            "repeat" : {
-              "icon" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Icon"
+            "repeat": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Icon"
                 }
               },
-              "link" : {
-                "type" : "Link",
-                "config" : {
-                  "label" : "link",
-                  "placeholder" : "Enter Link"
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "link",
+                  "placeholder": "Enter Link"
                 }
               },
-              "link-text" : {
-                "type" : "Text",
-                "config" : {
-                  "label" : "Link Text",
-                  "placeholder" : "Enter Link Text"
+              "link-text": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": "Enter Link Text"
                 }
               },
-              "link-style" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "link", "button-primary", "button-secondary", "button-success", "button-danger", "button-warning", "button-info", "button-dark" ],
-                  "default_value" : "link",
-                  "label" : "Link Style",
-                  "placeholder" : "Select Link Style"
+              "link-style": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "link",
+                    "button-primary",
+                    "button-secondary",
+                    "button-success",
+                    "button-danger",
+                    "button-warning",
+                    "button-info",
+                    "button-dark"
+                  ],
+                  "default_value": "link",
+                  "label": "Link Style",
+                  "placeholder": "Select Link Style"
                 }
               }
             }
